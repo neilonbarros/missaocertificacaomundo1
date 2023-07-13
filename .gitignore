@@ -1,0 +1,16 @@
+.env.develop
+.env.main
+*.crt
+*.pem
+**/logs
+**/.venv
+**/__pycache__
+**/.mpy_cache
+**/_old/
+
+**/migrations
+
+global/
+node_modules/
+
+.docker/mariadb/data

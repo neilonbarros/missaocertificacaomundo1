@@ -1,0 +1,144 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"breadcrumbs.enabled": true,
+		"code-runner.ignoreSelection": true,
+		"code-runner.runInTerminal": true,
+		"code-runner.clearPreviousOutput": true,
+		"code-runner.executorMap": {
+			"python": "./.venv/bin/python3",
+		},
+		"diffEditor.ignoreTrimWhitespace": false,
+		"[django-html]": {
+			"editor.formatOnSave": false,
+			"editor.defaultFormatter": "vscode.html-language-features",
+			"editor.quickSuggestions": {
+				"other": true,
+				"comments": true,
+				"strings": true
+			},
+		},
+		"editor.fontFamily": "'JetBrains Mono NL Nerd Font', monospace",
+		"editor.fontLigatures": false,
+		"editor.fontSize": 12,
+		"editor.minimap.maxColumn": 79,
+		"editor.minimap.size": "fill",
+		"editor.renderWhitespace": "all",
+		"editor.rulers": [79],
+		"editor.stickyScroll.enabled": false,
+		"editor.tabSize": 4,
+		"emmet.includeLanguages": {
+			"django-html": "html", // batisteo.vscode-django
+			"javascript": "javascriptreact",
+			"typescript": "typescriptreact"
+		},
+		"errorLens.gutterIconsEnabled": true,
+		"explorer.compactFolders": false,
+		"explorer.autoReveal": false,
+		"explorer.confirmDelete": true,
+		"files.associations": {
+			"*.js": "javascript",
+			"*.jsx": "javascriptreact",
+			"*.xml": "html",
+			"*.svg": "html",
+			"*.html": "html",
+			"django-html": "html", // batisteo.vscode-django
+			"**/*.html": "html",
+			"**/templates/**/*.html": "django-html",
+			"**/base_templates/**/*.html": "django-html",
+			"**/requirements{/**,*}.{txt,in}": "pip-requirements"
+		},
+		"files.autoSave": "afterDelay",
+		"[html]": {
+			"editor.formatOnSave": true,
+			"editor.defaultFormatter": "vscode.html-language-features",
+			"editor.quickSuggestions": {
+				"other": true,
+				"comments": true,
+				"strings": true
+			},
+		},
+		"peacock.color": "#ff3d00",
+		"python.analysis.typeCheckingMode": "basic",
+		"python.defaultInterpreterPath": "./.venv/bin/python3",
+		"python.formatting.blackPath": "black",
+		"python.formatting.provider": "black",
+		"python.languageServer": "Pylance", // ms-python.vscode-pylance
+		"python.terminal.activateEnvironment": true,
+		"python.testing.unittestEnabled": false, // ms-python.python
+		"python.testing.pytestEnabled": true,
+		"python.testing.pytestArgs": [], // -x to bail
+		"python.linting.flake8Enabled": true,
+		"python.linting.mypyEnabled": true,
+		"python.linting.pylintArgs": [
+			"--load-plugins=pylint_django",
+			"--errors-only"
+		],
+		"python.formatting.autopep8Args": [
+			"--indent-size=4"
+		],
+		"[python]": {
+			"editor.defaultFormatter": "ms-python.black-formatter", // ms-python.python
+			"editor.insertSpaces": true,
+			"editor.formatOnSave": true,
+			"editor.formatOnType": true,
+			"editor.codeActionsOnSave": {
+				"source.organizeImports": true
+			}
+		},
+		"terminal.integrated.defaultProfile.linux": "zsh",
+		"terminal.integrated.fontFamily": "'MesloLGS NF', monospace",
+		"terminal.integrated.fontSize": 12,
+		"workbench.activityBar.iconClickBehavior": "focus",
+		"workbench.activityBar.visible": true,
+		"workbench.colorCustomizations": {
+			"terminal.background": "#0E1019",
+			"terminal.foreground": "#FFFAF4",
+			"terminal.ansiBlack": "#444444",
+			"terminal.ansiBrightBlack": "#232323",
+			"terminal.ansiBlue": "#0092FF",
+			"terminal.ansiBrightBlue": "#0D6678",
+			"terminal.ansiCyan": "#67FFF0",
+			"terminal.ansiBrightCyan": "#00D8EB",
+			"terminal.ansiGreen": "#ABE15B",
+			"terminal.ansiBrightGreen": "#8CE10B",
+			"terminal.ansiMagenta": "#9A5FEB",
+			"terminal.ansiBrightMagenta": "#6D43A6",
+			"terminal.ansiRed": "#FF2740",
+			"terminal.ansiBrightRed": "#FF000F",
+			"terminal.ansiWhite": "#FFFFFF",
+			"terminal.ansiBrightWhite": "#FFFFFF",
+			"terminal.ansiYellow": "#FFD242",
+			"terminal.ansiBrightYellow": "#FFB900",
+			"terminalCursor.foreground": "#FFFAF4",
+			"tree.indentGuidesStroke": "#00ff00",
+			"activityBar.activeBackground": "#ff6433",
+			"activityBar.background": "#ff6433",
+			"activityBar.foreground": "#15202b",
+			"activityBar.inactiveForeground": "#15202b99",
+			"activityBarBadge.background": "#00ff3d",
+			"activityBarBadge.foreground": "#15202b",
+			"commandCenter.border": "#e7e7e799",
+			"sash.hoverBorder": "#ff6433",
+			"statusBar.background": "#ff3d00",
+			"statusBar.foreground": "#e7e7e7",
+			"statusBarItem.hoverBackground": "#ff6433",
+			"statusBarItem.remoteBackground": "#ff3d00",
+			"statusBarItem.remoteForeground": "#e7e7e7",
+			"titleBar.activeBackground": "#ff3d00",
+			"titleBar.activeForeground": "#e7e7e7",
+			"titleBar.inactiveBackground": "#ff3d0099",
+			"titleBar.inactiveForeground": "#e7e7e799"
+		},
+		"workbench.colorTheme": "OM Theme (No Italic)",
+		"workbench.editor.enablePreview": true,
+		"workbench.iconTheme": "material-icon-theme",
+		"workbench.tree.indent": 15,
+		"workbench.tree.renderIndentGuides": "always",
+		"workbench.view.alwaysShowHeaderActions": true,
+	}
+}
