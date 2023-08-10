@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="{{ html_language }}">
+
+{% include 'app/base/head/_head.html' %}
+
+<html class="h-full">
+    <body class="d-flex flex-column h-100 p-0">
+        <div class="container {% if display_center == True %} text-center my-auto {% endif %}">
+            {% if menu == True %}{% include 'app/base/menu/_page.html' %}{% endif %}
+            {% block content %}
+            {% endblock content %}
+        </div>
+
+    </body>
+</html>

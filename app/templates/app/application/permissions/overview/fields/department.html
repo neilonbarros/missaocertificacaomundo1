@@ -1,0 +1,29 @@
+{% load i18n %}
+<div class="
+        mb-3
+        col-6">
+    <label class="form-label"
+        for="search_department">
+        {% translate 'department'|title %}
+    </label>
+    <select class="form-select"
+            id="search_department"
+            name="search_department">
+        <option value="all"
+            {% if search_department == "all" or search_department == None %}
+                selected
+            {% endif %}
+            >
+            {% translate 'all' %}
+        </option>
+        {% for row in model_departments %}
+            <option value="{{ row.id }}"
+                {% if search_department == row.id|stringformat:"i" %}
+                    selected
+                {% endif %}>
+{{ row.department }}
+            </option>
+        {% endfor %}
+    </select>
+</div>
+

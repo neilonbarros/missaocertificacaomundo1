@@ -1,0 +1,17 @@
+{% if messages %}
+    <ul class="list-group mb-3">
+        {% for message in messages %}
+            {% if "DEBUG" in message.tags %}
+                <li class="list-group-item list-group-item-dark">{{ message }}</li>
+            {% elif "INFO" in message.tags %}
+                <li class="list-group-item list-group-item-info">{{ message }}</li>
+            {% elif "WARNING" in message.tags %}
+                <li class="list-group-item list-group-item-warning">{{ message }}</li>
+            {% elif "ERROR" in message.tags %}
+                <li class="list-group-item list-group-item-danger">{{ message }}</li>
+            {% elif "SUCCESS" in message.tags %}
+                <li class="list-group-item list-group-item-success">{{ message }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endif %}

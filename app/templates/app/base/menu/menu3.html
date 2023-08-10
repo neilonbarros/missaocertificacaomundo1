@@ -1,0 +1,48 @@
+{% load i18n %}
+<li class="
+        nav-item
+        dropdown">
+    <button class="
+            btn
+            btn-dark
+            dropdown-toggle
+            icon-link"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+        {% if 'menu3' not in sessionuser.permissions.nivel1 %}
+            {% include 'app/base/menu/icon_lock.html' %}
+        {% endif %}
+        Menu 3
+    </button>
+    <ul class="
+            dropdown-menu
+            dropdown-menu-dark">
+        <li>
+            <a class="dropdown-item"
+                href="#">
+                {% if 'menu3_submenu1' not in sessionuser.permissions.nivel2 %}
+                    {% include 'app/base/menu/icon_lock.html' %}
+                {% endif %}
+                SubMenu 2
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item"
+                href="#">
+                {% if 'menu3_submenu2' not in sessionuser.permissions.nivel2 %}
+                    {% include 'app/base/menu/icon_lock.html' %}
+                {% endif %}
+                SubMenu 2
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item"
+                href="#">
+                {% if 'menu3_submenu3' not in sessionuser.permissions.nivel2 %}
+                    {% include 'app/base/menu/icon_lock.html' %}
+                {% endif %}
+                SubMenu 3
+            </a>
+        </li>
+    </ul>
+</li>

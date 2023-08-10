@@ -1,0 +1,42 @@
+{% extends 'app/base/_page.html' %}
+{% load i18n %}
+{% block content %}
+
+<div class="
+        pricing-header
+        p-3
+        pb-md-4
+        mx-auto
+        text-center">
+    <h1 class="
+        display-1
+        fw-bold
+        text-body-emphasis">
+        {{ title }}
+    </h1>
+    <p class="
+        fs-5
+        text-body-secondary">
+        {% translate 'Oops, something went wrong.' %}
+        <br>
+        {{ message_error }}
+    </p>
+    <div class="
+            mt-5
+            flex
+            flex-col
+            justify-center
+            items-center
+            gap-2
+            sm:flex-row
+            sm:gap-3">
+        <a class="
+                btn
+                btn-primary"
+            href="/">
+            {% translate 'back'|title %}
+        </a>
+    </div>
+</div>
+
+{% endblock content %}

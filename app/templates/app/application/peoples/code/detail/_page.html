@@ -1,0 +1,66 @@
+{% load i18n %}
+<div class="
+        card
+        shadow
+        mb-3">
+    <div class="card-header">
+        {% translate 'about'|title %}
+    </div>
+    <div class="card-body">
+        {% if type_page == 'edit' %}
+            <!-- Form -->
+            <form action="{% url 'app:application:peoples:code:save' codepeople=codepeople %}"
+                method="post"
+                id="formPeoplesSaveId">
+                {% csrf_token %}
+                {% for hidden in form_people.hidden_fields %}
+                    {{ hidden }}
+                {% endfor %}
+        {% endif %}
+
+        {% include 'app/application/peoples/code/detail/fields/status.html' %}
+        {% with 'app/application/peoples/code/detail/fields/jobposition_'|add:type_page|add:'.html' as varinclude %}{% include varinclude %}{% endwith %}
+        {% include 'app/application/peoples/code/detail/fields/cpf.html' %}
+        {% include 'app/application/peoples/code/detail/fields/fullname.html' %}
+
+        {% if type_page == 'edit' %}
+                <button class="
+                        btn
+                        btn-primary"
+                    type="button"
+                    id="buttonPeoplesSaveId"
+                    name="buttonPeoplesSaveName"
+                    value="buttonPeoplesSaveId">
+
+                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+
+                    {% translate "save"|title %}
+                </button>
+                <script nonce="{{request.csp_nonce}}">
+                    document.addEventListener("DOMContentLoaded", function () {
+                    document.getElementById("buttonPeoplesSaveId")
+                        .addEventListener("click", function doThings() {
+                                const thisId = this.id;
+                                const button = document.getElementById(thisId);
+                                const buttonSpan = button.getElementsByTagName("span")[0];
+
+                                buttonSpan.classList.remove("d-none");
+
+                                const buttons = document.getElementsByTagName("button");
+
+                                for (const button of buttons) {
+                                    button.disabled = true;
+                                    button.classList.add("cursor-not-allowed");
+                                }
+
+                                const form = document.getElementById(thisId.replace("button", "form"));
+                                form.submit();
+                            }
+                        );
+                    });
+                </script>
+            </form>
+            <!-- End Form -->
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,17 @@
+{% load i18n %}
+<div class="py-8 first:pt-0 last:pb-0">
+    <div class="flex gap-x-5">
+
+        <svg class="flex-shrink-0 mt-1 w-7 h-7 fill-gray-500" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>
+
+        <main class="w-full max-w-md p-0">
+            <h4 class="font-semibold text-gray-800 text-xl md:text-lg">
+                {% translate 'Validate your token' %}.
+            </h4>
+            <div class="pt-4 pr-4 sm:pr-0">
+                {% include 'app/base/partials/alert.html' %}
+                {% include 'app/signup/form/_page.html' %}
+
+            </div>
+    </div>
+</div>

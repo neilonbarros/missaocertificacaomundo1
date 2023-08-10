@@ -1,0 +1,17 @@
+{% load i18n %}
+<!-- Form -->
+<form action="{% url 'app:signout:post' %}"
+    method="post"
+    id="formSignOutId">
+
+    {% csrf_token %}
+    {% for hidden in signout_form.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+
+    <div class="grid gap-y-4">
+        {% include 'app/signout/fields/home.html' %}
+        {% include 'app/signout/fields/signout.html' %}
+    </div>
+</form>
+<!-- End Form -->

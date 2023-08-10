@@ -1,0 +1,28 @@
+{% load i18n %}
+<div class="
+        mb-3
+        col-6">
+    <label class="form-label"
+        for="search_jobposition">
+        {% translate 'jobposition'|title %}
+    </label>
+    <select class="form-select"
+        id="search_jobposition"
+        name="search_jobposition">
+        <option value="all"
+            {% if search_jobposition == "all" or search_jobposition == None %}
+                selected
+            {% endif %}
+            >
+            {% translate 'all' %}
+        </option>
+        {% for row in model_jobpositions %}
+            <option value="{{ row.id }}"
+                {% if search_jobposition == row.id|stringformat:"i" %}
+                    selected
+                {% endif %}>
+{{ row.jobposition }}
+            </option>
+        {% endfor %}
+    </select>
+</div>

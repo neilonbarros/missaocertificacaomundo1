@@ -1,0 +1,29 @@
+{% load i18n %}
+<li>
+    <a class="dropdown-item"
+        href="#"
+        id="optionsApplicationPeoplesId">
+        {% if 'application_peoples' not in sessionuser.permissions.nivel2 %}
+            {% include 'app/base/menu/icon_lock.html' %}
+        {% else %}
+            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+            <script nonce="{{request.csp_nonce}}">
+
+                document.addEventListener("DOMContentLoaded", function () {
+                document.getElementById("optionsApplicationPeoplesId")
+                    .addEventListener("click", function doThings() {
+                            const thisId = this.id;
+                            const link = document.getElementById(thisId);
+                            const linkSpan = link.getElementsByTagName("span")[0];
+
+                            linkSpan.classList.remove("d-none");
+                            document.getElementById("optionsLoadingId").classList.remove("d-none");
+                            window.location.replace("{% url 'app:application:peoples:page' %}");
+                        }
+                    );
+                });
+            </script>
+        {% endif %}
+        {% translate "peoples"|title %}
+    </a>
+</li>

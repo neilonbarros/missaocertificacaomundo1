@@ -1,0 +1,35 @@
+{% load i18n %}
+<div class="form-floating mb-3 col-6">
+    <input class="form-control mb-2
+        {% if form_people.cpf.errors %}
+            is-invalid
+        {% endif %}"
+        type="text"
+        placeholder="x"
+        id="{{ form_people.cpf.id_for_label }}"
+        name="{{ form_people.cpf.html_name }}"
+        aria-label="{{ form_people.cpf.help_text }}"
+        {% if type_page == 'view' %} readonly {% endif %}
+        value="{{ form_people.cpf.value|default_if_none:'' }}">
+    <label class="{% if form_people.cpf.errors %} text-danger {% endif %}"
+        for="{{ form_people.cpf.id_for_label }}">
+        {{ form_people.cpf.field.label }}
+    </label>
+    {% if form_people.cpf.errors %}
+        <ol class="
+                list-group
+                list-group-numbered
+                list-group-item-danger">
+            {% for error in form_people.cpf.errors %}
+                <li class="list-group-item">
+                    {{ error|escape }}
+                </li>
+            {% endfor %}
+        </ol>
+        </ul>
+    {% else %}
+        <div class="form-text">
+            {{ form_people.cpf.help_text }}
+        </div>
+    {% endif %}
+</div>

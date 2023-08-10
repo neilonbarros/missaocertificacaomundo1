@@ -1,0 +1,36 @@
+{% load i18n %}
+<button class="
+        btn
+        btn-danger"
+    type="button"
+    id="buttonSignOutId"
+    name="buttonSignOutName"
+    value="buttonSignOutId">
+
+    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+
+    {% translate "sign out"|title %}
+</button>
+<script nonce="{{request.csp_nonce}}">
+    document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("buttonSignOutId")
+        .addEventListener("click", function doThings() {
+                const thisId = this.id;
+                const button = document.getElementById(thisId);
+                const buttonSpan = button.getElementsByTagName("span")[0];
+
+                buttonSpan.classList.remove("d-none");
+
+                const buttons = document.getElementsByTagName("button");
+
+                for (const button of buttons) {
+                    button.disabled = true;
+                    button.classList.add("cursor-not-allowed");
+                }
+
+                const form = document.getElementById(thisId.replace("button", "form"));
+                form.submit();
+            }
+        );
+    });
+</script>

@@ -1,0 +1,35 @@
+{% load i18n %}
+<div class="form-floating mb-3 col-6">
+    <input class="form-control mb-2
+    {% if form_jobposition.department.errors %}
+            is-invalid
+        {% endif %}"
+        type="text"
+        placeholder="x"
+        id="{{ form_jobposition.department.id_for_label }}"
+        name="{{ form_jobposition.department.html_name }}"
+        aria-label="{{ form_jobposition.department.help_text }}"
+        readonly
+        value="{% for row in model_departments %}{% if form_jobposition.department.value|stringformat:"i" == row.id|stringformat:"i" %}{{ row.department }}{% endif %}{% endfor %}">
+    <label class="{% if form_jobposition.department.errors %} text-danger {% endif %}"
+        for="{{ form_jobposition.department.id_for_label }}">
+        {{ form_jobposition.department.field.label }}
+    </label>
+    {% if form_jobposition.department.errors %}
+        <ol class="
+                list-group
+                list-group-numbered
+                list-group-item-danger">
+            {% for error in form_jobposition.department.errors %}
+                <li class="list-group-item">
+                    {{ error|escape }}
+                </li>
+            {% endfor %}
+        </ol>
+        </ul>
+    {% else %}
+        <div class="form-text">
+            {{ form_jobposition.department.help_text }}
+        </div>
+    {% endif %}
+</div>

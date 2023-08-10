@@ -1,0 +1,430 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-10 11:32-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+#: app/components/application/departments/code/get.py:53
+#: app/components/application/jobpositions/code/get.py:52
+#: app/components/application/peoples/code/get.py:52
+#: app/templates/app/application/departments/options/new.html:27
+#: app/templates/app/application/jobpositions/options/new.html:27
+#: app/templates/app/application/peoples/options/new.html:27
+msgid "new"
+msgstr "novo"
+
+#: app/components/application/departments/code/get.py:78
+#: app/components/application/departments/code/post.py:46
+#: app/components/application/departments/code/remove/get.py:60
+#: app/components/application/departments/code/remove/post.py:48
+#: app/components/application/jobpositions/code/get.py:78
+#: app/components/application/jobpositions/code/post.py:46
+#: app/components/application/jobpositions/code/remove/get.py:63
+#: app/components/application/jobpositions/code/remove/post.py:47
+#: app/components/application/peoples/code/get.py:75
+#: app/components/application/peoples/code/post.py:44
+#: app/components/application/permissions/code/get.py:59
+#: app/components/application/permissions/code/get.py:81
+#: app/components/application/permissions/code/post.py:39
+#, python-format
+msgid "%(field)s not found"
+msgstr "%(field)s não encontrado"
+
+#: app/components/application/departments/code/get.py:80
+#: app/components/application/departments/code/post.py:48
+#: app/components/application/departments/code/post.py:73
+#: app/components/application/departments/code/remove/get.py:62
+#: app/components/application/departments/code/remove/post.py:50
+#: app/components/application/departments/code/remove/post.py:59
+#: app/models/application_departments.py:19
+#: app/models/application_departments.py:23
+#: app/models/application_jobpositions.py:35
+#: app/models/application_peoples.py:54 app/models/application_peoples.py:57
+#: app/templates/app/application/departments/overview/fields/department.html:10
+#: app/templates/app/application/departments/overview/overview.html:24
+#: app/templates/app/application/jobpositions/overview/fields/department.html:7
+#: app/templates/app/application/jobpositions/overview/overview.html:27
+#: app/templates/app/application/peoples/overview/fields/department.html:7
+#: app/templates/app/application/peoples/overview/overview.html:30
+#: app/templates/app/application/permissions/overview/fields/department.html:7
+#: app/templates/app/application/permissions/overview/overview.html:27
+msgid "department"
+msgstr "departamento"
+
+#: app/components/application/departments/code/post.py:63
+#: app/components/application/jobpositions/code/post.py:63
+#: app/components/application/peoples/code/post.py:61
+msgid "there are fields to check"
+msgstr "há campos para verificar"
+
+#: app/components/application/departments/code/post.py:71
+#: app/components/application/jobpositions/code/post.py:77
+#: app/components/application/peoples/code/post.py:139
+#: app/components/application/permissions/code/post.py:116
+#, python-format
+msgid "%(field)s successfully saved"
+msgstr "%(field)s salvo com sucesso"
+
+#: app/components/application/departments/code/remove/get.py:45
+#: app/components/application/jobpositions/code/remove/get.py:46
+#: app/templates/app/application/departments/code/remove/form/remove.html:12
+#: app/templates/app/application/departments/options/remove.html:28
+#: app/templates/app/application/jobpositions/code/remove/form/remove.html:12
+#: app/templates/app/application/jobpositions/options/remove.html:28
+msgid "remove"
+msgstr "remover"
+
+#: app/components/application/departments/code/remove/post.py:57
+#: app/components/application/jobpositions/code/remove/post.py:56
+#, python-format
+msgid "%(field)s successfully removed"
+msgstr "%(field)s removido com sucesso"
+
+#: app/components/application/departments/get.py:81
+#: app/templates/app/application/departments/options/departments.html:27
+#: app/templates/app/base/menu/application.html:26
+msgid "departments"
+msgstr "departamentos"
+
+#: app/components/application/jobpositions/code/get.py:80
+#: app/components/application/jobpositions/code/post.py:48
+#: app/components/application/jobpositions/code/post.py:79
+#: app/components/application/jobpositions/code/remove/get.py:65
+#: app/components/application/jobpositions/code/remove/post.py:49
+#: app/components/application/jobpositions/code/remove/post.py:58
+#: app/components/application/permissions/code/get.py:61
+#: app/components/application/permissions/code/get.py:83
+#: app/components/application/permissions/code/post.py:41
+#: app/models/application_peoples.py:66 app/models/application_peoples.py:69
+msgid "job position"
+msgstr "cargo"
+
+#: app/components/application/jobpositions/get.py:109
+msgid "job positions"
+msgstr "cargos"
+
+#: app/components/application/peoples/code/get.py:77
+#: app/components/application/peoples/code/post.py:46
+#: app/components/application/peoples/code/post.py:141
+msgid "people"
+msgstr "pessoa"
+
+#: app/components/application/peoples/get.py:134
+#: app/templates/app/application/peoples/options/peoples.html:27
+#: app/templates/app/base/menu/application.html:53
+msgid "peoples"
+msgstr "pessoas"
+
+#: app/components/application/permissions/code/post.py:118
+#: app/models/application_permissions.py:25
+#: app/models/application_permissions.py:28
+#: app/templates/app/application/permissions/code/overview.html:19
+msgid "permission"
+msgstr "permissão"
+
+#: app/components/application/permissions/get.py:114
+#: app/templates/app/application/permissions/code/overview.html:8
+#: app/templates/app/base/menu/application.html:44
+msgid "permissions"
+msgstr "permissões"
+
+#: app/components/errors/_custom_bad_request_view.py:15
+msgid "The request cannot be fulfilled."
+msgstr "O pedido não pode ser atendido."
+
+#: app/components/errors/_custom_page_not_found_view.py:12
+msgid "The requested page could not be found."
+msgstr "A página solicitada não pôde ser encontrada."
+
+#: app/components/errors/_custom_permission_denied_view.py:12
+msgid "You do not have permission to access."
+msgstr "Você não tem permissão para acessar."
+
+#: app/components/home/get.py:27 app/templates/app/signout/fields/home.html:12
+msgid "home"
+msgstr ""
+
+#: app/components/signin/get.py:31 app/templates/app/signin/_page.html:12
+#: app/templates/app/signin/_page.html:31
+#: app/templates/app/signup/_page.html:16
+msgid "sign in"
+msgstr "entrar"
+
+#: app/components/signin/post.py:91
+msgid "cpf/password invalid"
+msgstr "cpf/password inválidos"
+
+#: app/components/signout/get.py:21
+#: app/templates/app/base/menu/application.html:62
+#: app/templates/app/signout/fields/signout.html:12
+msgid "sign out"
+msgstr "sair"
+
+#: app/components/signup/get.py:45 app/templates/app/signup/_page.html:10
+msgid "get token"
+msgstr "obter token"
+
+#: app/components/signup/post.py:75
+msgid "access created"
+msgstr "acesso criado"
+
+#: app/components/signup/post.py:81
+msgid "cpf/token invalid"
+msgstr "cpf/token inválidos"
+
+#: app/components/signup/post.py:89
+msgid "user already has access"
+msgstr "usuário já possui acesso"
+
+#: app/decorators/permissions/_load.py:72
+#: app/templates/app/application/permissions/code/overview.html:49
+msgid "no permission"
+msgstr "sem permissão"
+
+#: app/forms/application_jobposition.py:41 app/forms/application_people.py:67
+#, python-format
+msgid "%(field_labels)s already exist."
+msgstr "%(field_labels)s já existe."
+
+#: app/forms/signin.py:16
+msgid "password"
+msgstr "senha"
+
+#: app/models/application_departments.py:21
+#: app/models/application_peoples.py:27
+#, python-format
+msgid "This %(field)s already exists"
+msgstr "Este %(field)s já existe"
+
+#: app/models/application_departments.py:26
+#: app/models/application_jobpositions.py:21
+#: app/models/application_peoples.py:40
+#, python-format
+msgid "Minimum %(minimum_characters)s characters"
+msgstr "Mínimo %(minimum_characters)s caracteres"
+
+#: app/models/application_jobpositions.py:20
+#: app/templates/app/application/jobpositions/overview/fields/jobposition.html:10
+#: app/templates/app/application/jobpositions/overview/overview.html:24
+#: app/templates/app/application/peoples/overview/fields/jobposition.html:7
+#: app/templates/app/application/peoples/overview/overview.html:27
+#: app/templates/app/application/permissions/overview/fields/jobposition.html:7
+#: app/templates/app/application/permissions/overview/overview.html:24
+msgid "jobposition"
+msgstr "cargo"
+
+#: app/models/application_jobpositions.py:36
+msgid "Select"
+msgstr "selecione"
+
+#: app/models/application_passwords.py:18
+msgid "provisional"
+msgstr "provisório"
+
+#: app/models/application_peoples.py:18
+msgid "status"
+msgstr ""
+
+#: app/models/application_peoples.py:25 app/models/application_peoples.py:29
+#: app/packages/doc_br/__validate_cpf.py:14
+#: app/packages/doc_br/__validate_cpf.py:27
+msgid "cpf"
+msgstr ""
+
+#: app/models/application_peoples.py:32
+msgid "Only numbers"
+msgstr "Somente números"
+
+#: app/models/application_peoples.py:39
+#: app/templates/app/application/peoples/overview/fields/people.html:10
+#: app/templates/app/application/peoples/overview/overview.html:24
+msgid "fullname"
+msgstr "nome completo"
+
+#: app/models/application_peoples.py:55 app/models/application_peoples.py:67
+#: app/models/application_permissions.py:26
+#, python-format
+msgid "Inform the %(field)s"
+msgstr "Informe %(field)s"
+
+#: app/packages/doc_br/__validate_cnpj.py:12
+#: app/packages/doc_br/__validate_cnpj.py:24
+#: app/packages/doc_br/__validate_cpf.py:12
+#: app/packages/doc_br/__validate_cpf.py:25
+#, python-format
+msgid "The %(field)s is invalid"
+msgstr "%(field)s é inválido"
+
+#: app/packages/doc_br/__validate_cnpj.py:14
+#: app/packages/doc_br/__validate_cnpj.py:26
+msgid "cnpj"
+msgstr ""
+
+#: app/templates/app/application/departments/code/detail/_page.html:7
+#: app/templates/app/application/jobpositions/code/detail/_page.html:7
+#: app/templates/app/application/peoples/code/detail/_page.html:7
+msgid "about"
+msgstr "sobre"
+
+#: app/templates/app/application/departments/code/detail/_page.html:34
+#: app/templates/app/application/jobpositions/code/detail/_page.html:35
+#: app/templates/app/application/peoples/code/detail/_page.html:37
+#: app/templates/app/application/permissions/code/options/save.html:26
+msgid "save"
+msgstr "salvar"
+
+#: app/templates/app/application/departments/code/remove/_page.html:14
+#: app/templates/app/application/jobpositions/code/remove/_page.html:14
+#: app/templates/app/signout/_page.html:14
+msgid "Are you sure"
+msgstr "Você tem certeza"
+
+#: app/templates/app/application/departments/code/remove/form/no.html:12
+#: app/templates/app/application/jobpositions/code/remove/form/no.html:12
+msgid "no"
+msgstr "não"
+
+#: app/templates/app/application/departments/options/edit.html:28
+#: app/templates/app/application/jobpositions/options/edit.html:28
+#: app/templates/app/application/peoples/options/edit.html:28
+#: app/templates/app/application/permissions/code/options/edit.html:28
+msgid "edit"
+msgstr "editar"
+
+#: app/templates/app/application/departments/options/view.html:28
+#: app/templates/app/application/departments/overview/overview.html:33
+#: app/templates/app/application/jobpositions/options/view.html:28
+#: app/templates/app/application/jobpositions/overview/overview.html:36
+#: app/templates/app/application/peoples/options/view.html:28
+#: app/templates/app/application/peoples/overview/overview.html:39
+#: app/templates/app/application/permissions/code/options/view.html:28
+#: app/templates/app/application/permissions/overview/overview.html:36
+msgid "view"
+msgstr "ver"
+
+#: app/templates/app/application/departments/overview/fields/_page.html:7
+#: app/templates/app/application/departments/overview/fields/_page.html:31
+#: app/templates/app/application/jobpositions/overview/fields/_page.html:7
+#: app/templates/app/application/jobpositions/overview/fields/_page.html:32
+#: app/templates/app/application/peoples/overview/fields/_page.html:7
+#: app/templates/app/application/peoples/overview/fields/_page.html:33
+#: app/templates/app/application/permissions/overview/fields/_page.html:7
+#: app/templates/app/application/permissions/overview/fields/_page.html:32
+msgid "search"
+msgstr "pesquisar"
+
+#: app/templates/app/application/departments/overview/fields/department.html:8
+#: app/templates/app/application/jobpositions/overview/fields/department.html:17
+#: app/templates/app/application/jobpositions/overview/fields/jobposition.html:7
+#: app/templates/app/application/peoples/overview/fields/department.html:17
+#: app/templates/app/application/peoples/overview/fields/jobposition.html:17
+#: app/templates/app/application/peoples/overview/fields/people.html:7
+#: app/templates/app/application/permissions/overview/fields/department.html:17
+#: app/templates/app/application/permissions/overview/fields/jobposition.html:17
+msgid "all"
+msgstr "todos"
+
+#: app/templates/app/application/departments/overview/fields/department.html:10
+#: app/templates/app/application/jobpositions/overview/fields/jobposition.html:10
+#: app/templates/app/application/peoples/overview/fields/people.html:10
+msgid "contains"
+msgstr "contém"
+
+#: app/templates/app/application/departments/overview/overview.html:10
+#: app/templates/app/application/jobpositions/overview/overview.html:10
+#: app/templates/app/application/peoples/overview/overview.html:10
+#: app/templates/app/application/permissions/overview/overview.html:10
+msgid "result"
+msgstr "resultado"
+
+#: app/templates/app/application/departments/overview/overview.html:43
+#: app/templates/app/application/jobpositions/overview/overview.html:49
+#: app/templates/app/application/peoples/overview/overview.html:55
+#: app/templates/app/application/permissions/overview/overview.html:49
+msgid "no results"
+msgstr "sem resultados"
+
+#: app/templates/app/application/jobpositions/code/detail/fields/department_edit.html:22
+#: app/templates/app/application/peoples/code/detail/fields/jobposition_edit.html:22
+#: app/templates/app/application/peoples/code/detail/fields/status.html:36
+msgid "select"
+msgstr "selecione"
+
+#: app/templates/app/application/jobpositions/options/jobpositions.html:27
+#: app/templates/app/application/permissions/code/options/jobpositions.html:27
+#: app/templates/app/base/menu/application.html:35
+msgid "jobpositions"
+msgstr "cargos"
+
+#: app/templates/app/application/peoples/code/detail/fields/status.html:19
+msgid "inactive"
+msgstr "inativo"
+
+#: app/templates/app/application/peoples/code/detail/fields/status.html:20
+msgid "active"
+msgstr "ativo"
+
+#: app/templates/app/base/menu/_page.html:49
+msgid "options"
+msgstr "opções"
+
+#: app/templates/app/base/menu/application.html:15
+msgid "application"
+msgstr "applicação"
+
+#: app/templates/app/errors/_page.html:20
+msgid "Oops, something went wrong."
+msgstr "Oops, algo deu errado."
+
+#: app/templates/app/errors/_page.html:37
+msgid "back"
+msgstr "voltar"
+
+#: app/templates/app/signup/_page.html:13
+msgid "Already have an token"
+msgstr ""
+
+#: app/templates/app/signup/configure.html:10
+msgid "Configure your token"
+msgstr ""
+
+#: app/templates/app/signup/configure.html:10
+msgid "key"
+msgstr ""
+
+#: app/templates/app/signup/configure.html:26
+msgid "copy"
+msgstr ""
+
+#: app/templates/app/signup/configure.html:30
+msgid "copied"
+msgstr ""
+
+#: app/templates/app/signup/download.html:10
+msgid "Download the"
+msgstr ""
+
+#: app/templates/app/signup/download.html:21
+msgid "clicking here"
+msgstr ""
+
+#: app/templates/app/signup/form/_page.html:21
+msgid "validate"
+msgstr ""
+
+#: app/templates/app/signup/validate.html:9
+msgid "Validate your token"
+msgstr ""

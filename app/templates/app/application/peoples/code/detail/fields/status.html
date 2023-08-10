@@ -1,0 +1,39 @@
+{% load i18n %}
+<div class="
+        mb-3
+        col-6">
+    <label class="form-label
+        {% if form_people.status.errors %}
+            text-danger
+        {% endif %}"
+        for="{{ form_people.status.id_for_label }}">
+        {{ form_people.status.field.label }}
+    </label>
+    <select class="form-select mb-2
+        {% if form_people.status.errors %}
+            is-invalid
+        {% endif %}"
+        id="{{ form_people.status.id_for_label }}"
+        name="{{ form_people.status.html_name }}"
+        {% if type_page == 'view' %} disabled {% endif %}>
+        <option value="False" {% if form_people.status.value == 0 %} selected {% endif %}>{% translate 'inactive' %}</option>
+        <option value="True" {% if form_people.status.value == 1 %} selected {% endif %}>{% translate 'active' %}</option>
+    </select>
+    {% if form_people.status.errors %}
+        <ol class="
+                list-group
+                list-group-numbered
+                list-group-item-danger">
+            {% for error in form_people.status.errors %}
+                <li class="list-group-item">
+                    {{ error|escape }}
+                </li>
+            {% endfor %}
+        </ol>
+        </ul>
+    {% else %}
+        <div class="form-text">
+            {% translate 'select'|title %}
+        </div>
+    {% endif %}
+</div>

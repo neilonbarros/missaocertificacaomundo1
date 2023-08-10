@@ -1,0 +1,12 @@
+{% load i18n %}
+<div class="form-floating mb-3 col-6">
+    <input class="form-control"
+        type="text"
+        id="search_people"
+        name="search_people"
+        placeholder="{% translate 'all' %}"
+        value="{{ search_people|default_if_none:'' }}">
+    <label for="search_people">
+        {% translate 'fullname'|title %} ( {% translate 'contains' %} )
+    </label>
+</div>

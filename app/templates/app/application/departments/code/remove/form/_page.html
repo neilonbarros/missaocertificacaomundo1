@@ -1,0 +1,17 @@
+{% load i18n %}
+<!-- Form -->
+<form action="{% url 'app:application:departments:code:remove:post' codedepartment=codedepartment %}"
+    method="post"
+    id="formRemoveId">
+
+    {% csrf_token %}
+    {% for hidden in remove_form.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+
+    <div class="grid gap-y-4">
+        {% include 'app/application/departments/code/remove/form/no.html' %}
+        {% include 'app/application/departments/code/remove/form/remove.html' %}
+    </div>
+</form>
+<!-- End Form -->

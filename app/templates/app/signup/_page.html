@@ -1,0 +1,30 @@
+{% extends 'app/base/_page.html' %}
+{% load i18n %}
+{% block content %}
+
+    <!-- SignUp -->
+    <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto mt-16">
+        <!-- Title -->
+        <div class="max-w-2xl mx-auto mb-10 lg:mb-14">
+            <h1 class="font-bold md:leading-tight text-4xl md:text-3xl">
+                {% translate 'get token'|title %}
+            </h1>
+            <p class="mt-2 text-gray-600 text-lg md:text-base">
+                {% translate "Already have an token" %}?
+                <a class="text-sky-500 decoration-2 hover:underline font-medium text-lg md:text-base"
+                    href="{% url 'app:signin:page' %}">
+                    {% translate 'sign in'|title %}
+                </a>
+            </p>
+        </div>
+        <!-- End Title -->
+
+        <div class="max-w-2xl mx-auto divide-y divide-gray-200">
+            {% include 'app/signup/download.html' %}
+            {% include 'app/signup/configure.html' %}
+            {% include 'app/signup/validate.html' %}
+        </div>
+    </div>
+    <!-- End SignUp -->
+
+{% endblock content %}

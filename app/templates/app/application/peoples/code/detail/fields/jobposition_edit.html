@@ -1,0 +1,50 @@
+{% load i18n %}
+<div class="
+        mb-3
+        col-6">
+    <label class="form-label
+        {% if form_people.jobposition.errors %}
+            text-danger
+        {% endif %}"
+        for="{{ form_people.jobposition.id_for_label }}">
+        {{ form_people.jobposition.field.label }}
+    </label>
+    <select class="form-select mb-2
+        {% if form_people.jobposition.errors %}
+            is-invalid
+        {% endif %}"
+        id="{{ form_people.jobposition.id_for_label }}"
+        name="{{ form_people.jobposition.html_name }}"
+        aria-label="{{ form_people.jobposition.help_text }}">
+        <option value="0"
+            selected
+            disabled>
+            {% translate 'select'|title %}
+        </option>
+        {% for row in model_jobpositions %}
+            <option value="{{ row.id }}"
+                {% if form_people.jobposition.value|stringformat:"i" == row.id|stringformat:"i" %}
+                    selected
+                {% endif %}>
+                {{ row.jobposition }} | {{ row.department.department }}
+            </option>
+        {% endfor %}
+    </select>
+    {% if form_people.jobposition.errors %}
+        <ol class="
+                list-group
+                list-group-numbered
+                list-group-item-danger">
+            {% for error in form_people.jobposition.errors %}
+                <li class="list-group-item">
+                    {{ error|escape }}
+                </li>
+            {% endfor %}
+        </ol>
+        </ul>
+    {% else %}
+        <div class="form-text">
+            {{ form_people.jobposition.help_text }}
+        </div>
+    {% endif %}
+</div>

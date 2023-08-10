@@ -1,0 +1,29 @@
+{% extends 'app/base/_page.html' %}
+{% load i18n %}
+{% block content %}
+
+<div class="
+        pricing-header
+        p-3
+        pb-md-4
+        mx-auto
+        text-center">
+    <p class="
+        fs-5
+        text-body-secondary">
+        {% translate "Are you sure" %}?
+    </p>
+    <div class="
+            mt-5
+            flex
+            flex-col
+            justify-center
+            items-center
+            gap-2
+            sm:flex-row
+            sm:gap-3">
+            {% include 'app/signout/fields/_page.html' %}
+    </div>
+</div>
+
+{% endblock content %}

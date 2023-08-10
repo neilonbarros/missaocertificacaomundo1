@@ -1,0 +1,19 @@
+{% extends 'app/base/_page.html' %}
+{% load i18n %}
+
+{% block content %}
+    {% if type_page == 'edit' %}
+        <!-- Form -->
+        <form action="{% url 'app:application:permissions:code:save' codejobposition=codejobposition %}"
+            method="post"
+            id="formPermissionsSaveId">
+            {% csrf_token %}
+    {% endif %}
+
+    {% include 'app/application/permissions/code/overview.html' %}
+
+    {% if type_page == 'edit' %}
+        </form>
+        <!-- End Form -->
+    {% endif %}
+{% endblock content %}

@@ -1,0 +1,79 @@
+{% load i18n %}
+
+<div class="
+        card
+        shadow
+        mb-3">
+    <div class="card-header">
+        {% translate 'permissions'|title %}
+    </div>
+    <div class="
+        card-body">
+        <table class="
+                table
+                table-borderless
+                table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        {% translate 'permission'|title %}
+                    </th>
+                    <th scope="col">
+                        nivel 1
+                    </th>
+                    <th scope="col">
+                        nivel 2
+                    </th>
+                    <th scope="col">
+                        nivel 3
+                    </th>
+                    <th scope="col">
+                        nivel 4
+                    </th>
+                    <th scope="col">
+                        nivel 5
+                    </th>
+                    <th scope="col">
+                        nivel 6
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in permissions %}
+                    <tr>
+                        <th scope="row">
+                            <select class="form-select"
+                                id="{{ row.nivel1.name }}_{{ row.nivel1.nivel2.name }}{% if row.nivel1.nivel2.nivel3.name != "" %}_{{ row.nivel1.nivel2.nivel3.name }}{% if row.nivel1.nivel2.nivel3.nivel4.name != "" %}_{{ row.nivel1.nivel2.nivel3.nivel4.name }}{% if row.nivel1.nivel2.nivel3.nivel4.nivel5.name != "" %}_{{ row.nivel1.nivel2.nivel3.nivel4.nivel5.name }}{% if row.nivel1.nivel2.nivel3.nivel4.nivel5.nivel6.name != "" %}_{{ row.nivel1.nivel2.nivel3.nivel4.nivel5.nivel6.name }}{% endif %}{% endif %}{% endif %}{% endif %}"
+                                name="{{ row.nivel1.name }}_{{ row.nivel1.nivel2.name }}{% if row.nivel1.nivel2.nivel3.name != "" %}_{{ row.nivel1.nivel2.nivel3.name }}{% if row.nivel1.nivel2.nivel3.nivel4.name != "" %}_{{ row.nivel1.nivel2.nivel3.nivel4.name }}{% if row.nivel1.nivel2.nivel3.nivel4.nivel5.name != "" %}_{{ row.nivel1.nivel2.nivel3.nivel4.nivel5.name }}{% if row.nivel1.nivel2.nivel3.nivel4.nivel5.nivel6.name != "" %}_{{ row.nivel1.nivel2.nivel3.nivel4.nivel5.nivel6.name }}{% endif %}{% endif %}{% endif %}{% endif %}"
+                                {% if type_page == 'view' %} disabled {% endif %}>
+                                <option value="nopermission">{% translate 'no permission' %}</option>
+
+                                {% for type in row.types %}
+                                    <option id="{{ row.nivel1.name }}_{{ row.nivel1.nivel2.name }}{% if row.nivel1.nivel2.nivel3.name != "" %}_{{ row.nivel1.nivel2.nivel3.name }}{% if row.nivel1.nivel2.nivel3.nivel4.name != "" %}_{{ row.nivel1.nivel2.nivel3.nivel4.name }}{% if row.nivel1.nivel2.nivel3.nivel4.nivel5.name != "" %}_{{ row.nivel1.nivel2.nivel3.nivel4.nivel5.name }}{% if row.nivel1.nivel2.nivel3.nivel4.nivel5.nivel6.name != "" %}_{{ row.nivel1.nivel2.nivel3.nivel4.nivel5.nivel6.name }}{% endif %}{% endif %}{% endif %}{% endif %}:{{ type }}"
+                                        value="{{ type }}">
+                                        {% translate type %}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </th>
+                        <td>{% translate row.nivel1.name %}</td>
+                        <td>{% translate row.nivel1.nivel2.name %}</td>
+                        <td>{% translate row.nivel1.nivel2.nivel3.name %}</td>
+                        <td>{% translate row.nivel1.nivel2.nivel3.nivel4.name %}</td>
+                        <td>{% translate row.nivel1.nivel2.nivel3.nivel4.nivel5.name %}</td>
+                        <td>{% translate row.nivel1.nivel2.nivel3.nivel4.nivel5.nivel6.name %}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script nonce = "{{ request.csp_nonce }}">
+    {% for row in result_permissions %}
+        element = document.getElementById("{{ row }}");
+        if(element != null) {
+            element.setAttribute("selected", true);
+        }
+    {% endfor %}
+</script>

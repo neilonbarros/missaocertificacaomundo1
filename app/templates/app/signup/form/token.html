@@ -1,0 +1,21 @@
+{% load i18n %}
+<!-- Form Group -->
+<div>
+    <label class="block mb-2 text-lg text-lg md:text-base"
+        for="{{ signup_form.token.id_for_label }}" >
+        {{ signup_form.token.field.label }}
+    </label>
+    <input class="py-3 px-4 block w-full border-gray-200 rounded-md focus:border-slate-800 focus:ring-slate-800 text-lg md:text-base"
+        type="text"
+        id="{{ signup_form.token.id_for_label }}"
+        name="{{ signup_form.token.html_name }}"
+        required>
+</div>
+<!-- End Form Group -->
+<script nonce="{{request.csp_nonce}}">
+    var element = document.getElementById('{{ signup_form.token.id_for_label }}');
+    var maskOptions = {
+        mask: '000 000'
+    };
+    var mask = IMask(element, maskOptions);
+</script>

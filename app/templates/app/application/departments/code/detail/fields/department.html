@@ -1,0 +1,35 @@
+{% load i18n %}
+<div class="form-floating mb-3 col-6">
+    <input class="form-control mb-2
+        {% if form_department.department.errors %}
+            is-invalid
+        {% endif %}"
+        type="text"
+        placeholder="x"
+        id="{{ form_department.department.id_for_label }}"
+        name="{{ form_department.department.html_name }}"
+        aria-label="{{ form_department.department.help_text }}"
+        value="{{ form_department.department.value|default_if_none:'' }}"
+        {% if type_page == 'view' %} readonly {% endif %}>
+    <label class="{% if form_department.department.errors %} text-danger {% endif %}"
+        for="{{ form_department.department.id_for_label }}">
+        {{ form_department.department.field.label }}
+    </label>
+    {% if form_department.department.errors %}
+        <ol class="
+                list-group
+                list-group-numbered
+                list-group-item-danger">
+            {% for error in form_department.department.errors %}
+                <li class="list-group-item">
+                    {{ error|escape }}
+                </li>
+            {% endfor %}
+        </ol>
+        </ul>
+    {% else %}
+        <div class="form-text">
+            {{ form_department.department.help_text }}
+        </div>
+    {% endif %}
+</div>

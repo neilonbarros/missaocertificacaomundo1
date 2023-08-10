@@ -1,0 +1,15 @@
+{% load i18n %}
+<div class="form-floating mb-3">
+    <input class="form-control"
+        id="{{ signin_form.cpf.id_for_label }}"
+        name="{{ signin_form.cpf.html_name }}"
+        value="{% if signin_cpf != None %}{{ signin_cpf }}{% endif %}"
+        type="text"
+        placeholder="0000000000"
+        maxlength="11"
+        minlength="11"
+        required>
+    <label for="{{ signin_form.cpf.id_for_label }}">
+        {{ signin_form.cpf.field.label }}
+    </label>
+</div>

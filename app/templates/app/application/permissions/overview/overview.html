@@ -1,0 +1,58 @@
+{% load i18n %}
+
+{% if search_permissions_post == True %}
+
+    <div class="
+        card
+        shadow
+        mb-3">
+        <div class="card-header">
+            {% translate 'result'|title %}
+        </div>
+        <div class="
+            card-body">
+            <table class="
+                    table
+                    table-borderless
+                    table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            #
+                        </th>
+                        <th scope="col">
+                            {% translate 'jobposition'|title %}
+                        </th>
+                        <th scope="col">
+                            {% translate 'department'|title %}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in overview_jobpositions %}
+                        <tr>
+                            <th scope="row">
+                                <a href="{% url 'app:application:permissions:code:view' codejobposition=row.id %}">
+                                    {% translate 'view'|title %}
+                                </a>
+                            </th>
+                            <td>
+                                {{ row.jobposition }}
+                            </td>
+                            <td>
+                                {{ row.department.department }}
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan=100>
+                                {% translate 'no results'|title %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endif %}

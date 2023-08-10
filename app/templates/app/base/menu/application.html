@@ -1,0 +1,66 @@
+{% load i18n %}
+<li class="
+        nav-item
+        dropdown">
+    <button class="
+            btn
+            btn-dark
+            dropdown-toggle
+            icon-link"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+        {% if 'application' not in sessionuser.permissions.nivel1 %}
+            {% include 'app/base/menu/icon_lock.html' %}
+        {% endif %}
+        {% translate 'application'|title %}
+    </button>
+    <ul class="
+            dropdown-menu
+            dropdown-menu-dark">
+        <li>
+            <a class="dropdown-item"
+                href="{% if 'application_departments' in sessionuser.permissions.nivel2 %}{% url 'app:application:departments:page' %}{% endif %}">
+                {% if 'application_departments' not in sessionuser.permissions.nivel2 %}
+                    {% include 'app/base/menu/icon_lock.html' %}
+                {% endif %}
+                {% translate 'departments'|title %}
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item"
+                href="{% if 'application_jobpositions' in sessionuser.permissions.nivel2 %}{% url 'app:application:jobpositions:page' %}{% endif %}">
+                {% if 'application_jobpositions' not in sessionuser.permissions.nivel2 %}
+                    {% include 'app/base/menu/icon_lock.html' %}
+                {% endif %}
+                {% translate 'jobpositions'|title %}
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item"
+                href="{% if 'application_permissions' in sessionuser.permissions.nivel2 %}{% url 'app:application:permissions:page' %}{% endif %}">
+                {% if 'application_permissions' not in sessionuser.permissions.nivel2 %}
+                    {% include 'app/base/menu/icon_lock.html' %}
+                {% endif %}
+                {% translate 'permissions'|title %}
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item"
+                href="{% if 'application_peoples' in sessionuser.permissions.nivel2 %}{% url 'app:application:peoples:page' %}{% endif %}">
+                {% if 'application_peoples' not in sessionuser.permissions.nivel2 %}
+                    {% include 'app/base/menu/icon_lock.html' %}
+                {% endif %}
+                {% translate 'peoples'|title %}
+            </a>
+        </li>
+        <li class="mt-2">
+            <a class="
+                    dropdown-item
+                    fw-bold"
+                style="color: #f1948a;"
+                href="{% url 'app:signout:page' %}">
+                {% translate 'sign out'|title %}
+            </a>
+        </li>
+    </ul>
+</li>

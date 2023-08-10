@@ -1,0 +1,31 @@
+{% load i18n %}
+{% if type_page == 'view' %}
+    <li>
+        <a class="dropdown-item"
+            href="#"
+            id="optionsApplicationJobpositionsEditId">
+            {% if 'application_peoples_code:edit' not in sessionuser.permissions.type %}
+                {% include 'app/base/menu/icon_lock.html' %}
+            {% else %}
+                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                <script nonce="{{request.csp_nonce}}">
+
+                    document.addEventListener("DOMContentLoaded", function () {
+                    document.getElementById("optionsApplicationJobpositionsEditId")
+                        .addEventListener("click", function doThings() {
+                                const thisId = this.id;
+                                const link = document.getElementById(thisId);
+                                const linkSpan = link.getElementsByTagName("span")[0];
+
+                                linkSpan.classList.remove("d-none");
+                                document.getElementById("optionsLoadingId").classList.remove("d-none");
+                                window.location.replace("{% url 'app:application:peoples:code:edit' codepeople=codepeople %}");
+                            }
+                        );
+                    });
+                </script>
+            {% endif %}
+            {% translate "edit"|title %}
+        </a>
+    </li>
+{% endif %}
