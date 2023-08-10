@@ -1,5 +1,3 @@
-import os
-
 from django.conf import settings
 from django.contrib import messages as djangomessages
 from django.http import Http404, HttpRequest, HttpResponse
@@ -12,16 +10,9 @@ from app import forms as appforms
 from app import models as appmodels
 from app import packages as apppackages
 
-app_name: str = "app"
-
-subdirs: list = os.path.dirname(__file__).split("/")
-nivel1: str = subdirs[-3]
-nivel2: str = subdirs[-2]
-
 
 @appdecorators.authenticated.is_authenticated()
 @appdecorators.permissions.validate(
-    app_name=app_name,
     file=__file__,
 )
 def page(
@@ -35,15 +26,9 @@ def page(
 
     elif codepeople == "new" and type_page == "view":
         return redirect(
-            f"{app_name}:application:peoples:code:edit",
+            "app:application:peoples:code:edit",
             codepeople=codepeople,
         )
-
-    breadcrumbs: list[str] = [
-        app_name,
-        _(nivel1),
-        _(nivel2),
-    ]
 
     try:
         model_peoples: appmodels.ApplicationPeoples
@@ -65,9 +50,6 @@ def page(
                     id=codepeople,
                 )
                 title = model_peoples.fullname
-
-                if type_page == "edit":
-                    breadcrumbs.append(_(type_page))
 
             except appmodels.ApplicationPeoples.DoesNotExist:
                 djangomessages.error(
@@ -100,12 +82,10 @@ def page(
             context={
                 "settings_debug": settings.DEBUG,
                 "sessionuser": session_user,
-                "app_name": app_name,
                 "html_language": translation.get_language(),
                 "title": title,
                 "menu": True,
                 "display_center": False,
-                "breadcrumbs": breadcrumbs,
                 "options": "app/application/peoples/code/options/_page.html",  # noqa
                 "codepeople": codepeople,
                 "type_page": type_page,
@@ -120,8 +100,8 @@ def page(
         #     template_name="app/application/peoples/code/_page.html",  # noqa: E501
         #     context={
         #         "sessionuser": session_user,
-        #         "app_name": app_name,
-        #         "breadcrumbs": breadcrumbs,
+        #
+        #
         #         "title": title,
         #         "menu": True,
         #         "codepeople": codepeople,
@@ -135,7 +115,7 @@ def page(
     except ValueError as e:
         if str(e) in ("peoples_not_found",):
             return redirect(
-                f"{app_name}:application:peoples:page",
+                "app:application:peoples:page",
             )
 
         raise ValueError(e)

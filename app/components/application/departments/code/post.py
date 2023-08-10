@@ -8,12 +8,9 @@ from app import forms as appforms
 from app import models as appmodels
 from app import packages as apppackages
 
-app_name: str = "app"
-
 
 @appdecorators.authenticated.is_authenticated()
 @appdecorators.permissions.validate(
-    app_name=app_name,
     file=__file__,
 )
 def save(
@@ -75,7 +72,7 @@ def save(
         )
 
         return redirect(
-            f"{app_name}:application:departments:code:view",
+            "app:application:departments:code:view",
             codedepartment=form_department.instance.id,
         )
 
@@ -84,19 +81,19 @@ def save(
             request.session["DEPARTMENTSAVE"] = request.POST
             request.session.modified = True
             return redirect(
-                f"{app_name}:application:departments:code:edit",
+                "app:application:departments:code:edit",
                 codedepartment=codedepartment,
             )
 
         elif str(e) in ("department_already_exists",):
             return redirect(
-                f"{app_name}:application:departments:code:edit",
+                "app:application:departments:code:edit",
                 codedepartment=codedepartment,
             )
 
         elif str(e) in ("department_not_found",):
             return redirect(
-                f"{app_name}:application:departments:page",
+                "app:application:departments:page",
             )
 
         raise ValueError(e)

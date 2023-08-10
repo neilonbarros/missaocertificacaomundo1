@@ -4,9 +4,6 @@ from app import components as appcomponents
 
 from . import code
 
-app_name: str = "app"
-
-
 urls = (
     [
         path(

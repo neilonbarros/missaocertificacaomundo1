@@ -7,8 +7,6 @@ from django.utils.translation import gettext_lazy as _
 from app import decorators as appdecorators
 from app import packages as apppackages
 
-app_name: str = "app"
-
 
 @appdecorators.authenticated.is_authenticated()
 def page(
@@ -25,7 +23,6 @@ def page(
         context={
             "settings_debug": settings.DEBUG,
             "sessionuser": session_user,
-            "app_name": app_name,
             "html_language": translation.get_language(),
             "title": title,
             "menu": False,

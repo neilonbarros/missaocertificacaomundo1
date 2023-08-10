@@ -3,8 +3,6 @@ from django.shortcuts import render
 from django.utils import translation
 from django.utils.translation import gettext as _
 
-app_name: str = "app"
-
 
 def custom_page_not_found_view(request, exception):
     title: str = "404"  # type: ignore
@@ -15,7 +13,6 @@ def custom_page_not_found_view(request, exception):
         template_name="app/errors/_page.html",
         context={
             "settings_debug": settings.DEBUG,
-            "app_name": app_name,
             "html_language": translation.get_language(),
             "title": title,
             "menu": False,

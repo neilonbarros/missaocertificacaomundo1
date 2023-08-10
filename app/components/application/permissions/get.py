@@ -11,16 +11,9 @@ from app import decorators as appdecorators
 from app import models as appmodels
 from app import packages as apppackages
 
-app_name: str = "app"
-
-subdirs: list = os.path.dirname(__file__).split("/")
-nivel1: str = subdirs[-2]
-nivel2: str = subdirs[-1]
-
 
 @appdecorators.authenticated.is_authenticated()
 @appdecorators.permissions.validate(
-    app_name=app_name,
     file=__file__,
 )
 def page(
@@ -107,10 +100,6 @@ def page(
     else:
         overview_jobpositions = appmodels.ApplicationJobPositions()
 
-    breadcrumbs: list[str] = [
-        app_name,
-        _(nivel1),
-    ]
     title: str = _("permissions")
 
     return render(
@@ -119,12 +108,10 @@ def page(
         context={
             "settings_debug": settings.DEBUG,
             "sessionuser": session_user,
-            "app_name": app_name,
             "html_language": translation.get_language(),
             "title": title,
             "menu": True,
             "display_center": False,
-            "breadcrumbs": breadcrumbs,
             "search_permissions_post": search_permissions_post,
             "search_department": search_department,
             "search_jobposition": search_jobposition,

@@ -40,12 +40,6 @@ agora faremos a instalações de todas as dependências necessárias para o proj
 (.venv) ...> .venv\Scripts\poetry.exe install
 ```
 
-agora que todas as dependências foram instaladas, faremos a configuração do projeto
-```
-(.venv) ...> .venv\Scripts\python.exe manage.py makemigrations app
-(.venv) ...> .venv\Scripts\python.exe manage.py migrate app
-```
-
 e por fim iniciaremos o projeto
 ```
 (.venv) ...> .venv\Scripts\python.exe manage.py runserver

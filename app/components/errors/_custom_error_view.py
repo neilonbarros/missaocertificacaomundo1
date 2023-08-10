@@ -2,8 +2,6 @@ from django.conf import settings
 from django.shortcuts import render
 from django.utils import translation
 
-app_name: str = "app"
-
 
 def custom_error_view(request, exception=None):
     title: str = "500"  # type: ignore
@@ -14,7 +12,6 @@ def custom_error_view(request, exception=None):
         template_name="app/errors/_page.html",
         context={
             "settings_debug": settings.DEBUG,
-            "app_name": app_name,
             "html_language": translation.get_language(),
             "title": title,
             "menu": False,

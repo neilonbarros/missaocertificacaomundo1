@@ -8,7 +8,6 @@ from django.views.decorators.cache import cache_control
 
 
 def validate(
-    app_name: str,
     file: str = "",
 ):
     def decorator(function):
@@ -36,13 +35,13 @@ def validate(
             if len(session_user.permissions.type) > 0:
                 directories: list[str] = file.split("/")  # type: ignore
 
-                if app_name not in directories:
+                if 'app' not in directories:
                     raise RuntimeError("permissions without map")
 
                 appdir: int = 0  # type: ignore
                 for x in range(1, 10):
                     index: int = x * -1  # type: ignore
-                    if directories[index] == app_name:
+                    if directories[index] == 'app':
                         appdir = index + 1
                         break
 

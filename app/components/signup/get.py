@@ -10,8 +10,6 @@ from app import decorators as appdecorators
 from app import forms as appforms
 from app import packages as apppackages
 
-app_name: str = "app"
-
 
 @appdecorators.authenticated.not_authenticated()
 def page(request: HttpRequest) -> HttpResponse:
@@ -49,7 +47,6 @@ def page(request: HttpRequest) -> HttpResponse:
         template_name="app/signup/_page.html",
         context={
             "settings_debug": settings.DEBUG,
-            "app_name": app_name,
             "html_language": translation.get_language(),
             "title": title,
             "menu": False,

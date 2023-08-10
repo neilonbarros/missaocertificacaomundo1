@@ -7,12 +7,9 @@ from app import decorators as appdecorators
 from app import models as appmodels
 from app import packages as apppackages
 
-app_name: str = "app"
-
 
 @appdecorators.authenticated.is_authenticated()
 @appdecorators.permissions.validate(
-    app_name=app_name,
     file=__file__,
 )
 def save(
@@ -26,7 +23,7 @@ def save(
 
     try:
         if codejobposition == "new":
-            redirect(f"{app_name}:application:permissions:page")
+            redirect("app:application:permissions:page")
 
         elif (
             appmodels.ApplicationJobPositions.objects.filter(
@@ -120,14 +117,14 @@ def save(
         )
 
         return redirect(
-            f"{app_name}:application:permissions:code:view",
+            "app:application:permissions:code:view",
             codejobposition=codejobposition,
         )
 
     except ValueError as e:
         if str(e) in ("jobpositions_not_found",):
             return redirect(
-                f"{app_name}:application:permissions:page",
+                "app:application:permissions:page",
             )
 
         raise ValueError(e)

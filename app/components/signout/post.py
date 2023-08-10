@@ -1,8 +1,6 @@
 from django.http import Http404, HttpRequest, HttpResponse
 from django.shortcuts import redirect
 
-app_name: str = "app"
-
 
 def signout(request: HttpRequest) -> HttpResponse:
     if request.method != "POST":

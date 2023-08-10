@@ -2,9 +2,6 @@ from django.urls import include, path
 
 from . import departments, jobpositions, peoples, permissions
 
-app_name: str = "app"
-
-
 urls = (
     [
         # path(

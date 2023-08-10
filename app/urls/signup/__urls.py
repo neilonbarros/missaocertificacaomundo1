@@ -2,9 +2,6 @@ from django.urls import path
 
 from app import components as appcomponents
 
-app_name: str = "app"
-
-
 urls = (
     [
         path(

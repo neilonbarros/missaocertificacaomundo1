@@ -4,12 +4,9 @@ from django.shortcuts import redirect
 from app import decorators as appdecorators
 from app import packages as apppackages
 
-app_name: str = "app"
-
 
 @appdecorators.authenticated.is_authenticated()
 @appdecorators.permissions.validate(
-    app_name=app_name,
     file=__file__,
 )
 def search(
@@ -25,7 +22,7 @@ def search(
         request.session.modified = True
 
         return redirect(
-            f"{app_name}:application:departments:page",
+            "app:application:departments:page",
         )
 
     except ValueError as e:

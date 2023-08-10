@@ -1,5 +1,3 @@
-import os
-
 from django.conf import settings
 from django.contrib import messages as djangomessages
 from django.http import Http404, HttpRequest, HttpResponse
@@ -12,17 +10,9 @@ from app import forms as appforms
 from app import models as appmodels
 from app import packages as apppackages
 
-app_name: str = "app"
-
-
-subdirs: list = os.path.dirname(__file__).split("/")
-nivel1: str = subdirs[-3]
-nivel2: str = subdirs[-2]
-
 
 @appdecorators.authenticated.is_authenticated()
 @appdecorators.permissions.validate(
-    app_name=app_name,
     file=__file__,
 )
 def page(
@@ -36,15 +26,9 @@ def page(
 
     elif codedepartment == "new" and type_page == "view":
         return redirect(
-            f"{app_name}:application:departments:code:edit",
+            "app:application:departments:code:edit",
             codedepartment=codedepartment,
         )
-
-    breadcrumbs: list[str] = [
-        app_name,
-        _(nivel1),
-        _(nivel2),
-    ]
 
     try:
         model_departments: appmodels.ApplicationDepartments
@@ -69,9 +53,6 @@ def page(
                 )
                 title = model_departments.department
 
-                if type_page == "edit":
-                    breadcrumbs.append(_(type_page))
-
             except appmodels.ApplicationDepartments.DoesNotExist:
                 djangomessages.error(
                     request=request,
@@ -95,12 +76,10 @@ def page(
             context={
                 "settings_debug": settings.DEBUG,
                 "sessionuser": session_user,
-                "app_name": app_name,
                 "html_language": translation.get_language(),
                 "title": title,
                 "menu": True,
                 "display_center": False,
-                "breadcrumbs": breadcrumbs,
                 "options": "app/application/departments/code/options/_page.html",  # noqa
                 "codedepartment": codedepartment,
                 "type_page": type_page,
@@ -112,7 +91,7 @@ def page(
     except ValueError as e:
         if str(e) in ("department_not_found",):
             return redirect(
-                f"{app_name}:application:departments:page",
+                "app:application:departments:page",
             )
 
         raise ValueError(e)

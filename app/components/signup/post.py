@@ -8,8 +8,6 @@ from app import forms as appforms
 from app import models as appmodels
 from app import packages as apppackages
 
-app_name: str = "app"
-
 
 @appdecorators.authenticated.not_authenticated()
 def signup(request: HttpRequest) -> HttpResponse:

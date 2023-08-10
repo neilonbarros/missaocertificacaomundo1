@@ -8,12 +8,9 @@ from app import forms as appforms
 from app import models as appmodels
 from app import packages as apppackages
 
-app_name: str = "app"
-
 
 @appdecorators.authenticated.is_authenticated()
 @appdecorators.permissions.validate(
-    app_name=app_name,
     file=__file__,
 )
 def save(
@@ -81,7 +78,7 @@ def save(
         )
 
         return redirect(
-            f"{app_name}:application:jobpositions:code:view",
+            "app:application:jobpositions:code:view",
             codejobposition=form_jobposition.instance.id,
         )
 
@@ -90,19 +87,19 @@ def save(
             request.session["JOBPOSITIONSSAVE"] = request.POST
             request.session.modified = True
             return redirect(
-                f"{app_name}:application:jobpositions:code:edit",
+                "app:application:jobpositions:code:edit",
                 codejobposition=codejobposition,
             )
 
         elif str(e) in ("jobpositions_already_exists",):
             return redirect(
-                f"{app_name}:application:jobpositions:code:edit",
+                "app:application:jobpositions:code:edit",
                 codejobposition=codejobposition,
             )
 
         elif str(e) in ("jobpositions_not_found",):
             return redirect(
-                f"{app_name}:application:jobpositions:page",
+                "app:application:jobpositions:page",
             )
 
         raise ValueError(e)
