@@ -42,8 +42,8 @@ agora faremos a instalações de todas as dependências necessárias para o proj
 
 agora que todas as dependências foram instaladas, faremos a configuração do projeto
 ```
-(.venv)$ python manage.py makemigrations
-(.venv)$ python manage.py migrate
+(.venv)$ python manage.py makemigrations app
+(.venv)$ python manage.py migrate app
 ```
 
 e por fim iniciaremos o projeto
