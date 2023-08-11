@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-10 23:21-0300\n"
+"POT-Creation-Date: 2023-08-11 10:45-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,42 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: app/components/application/configuration/get.py:44
+#: app/templates/app/base/menu/application.html:59
+msgid "configuration"
+msgstr "configuração"
+
+#: app/components/application/configuration/password/post.py:58
+#: app/components/application/departments/code/post.py:60
+#: app/components/application/jobpositions/code/post.py:60
+#: app/components/application/peoples/code/post.py:60
+msgid "there are fields to check"
+msgstr "há campos para verificar"
+
+#: app/components/application/configuration/password/post.py:97
+#, python-format
+msgid "successfully changed %(field)s"
+msgstr "%(field)s alterado com sucesso"
+
+#: app/components/application/configuration/password/post.py:99
+#: app/forms/configuration_password.py:7 app/forms/signin.py:16
+#: app/forms/signup.py:20
+#: app/templates/app/application/configuration/password/detail/_page.html:8
+msgid "password"
+msgstr "senha"
+
+#: app/components/application/configuration/password/post.py:119
+msgid "the new passwords are not the same"
+msgstr "as novas senhas não são iguais"
+
+#: app/components/application/configuration/password/post.py:142
+msgid "without user data"
+msgstr "sem dados do usuário"
+
+#: app/components/application/configuration/password/post.py:146
+msgid "no more attempts"
+msgstr "acabaram-se as tentativas"
 
 #: app/components/application/departments/code/get.py:37
 #: app/components/application/jobpositions/code/get.py:37
@@ -65,15 +101,9 @@ msgstr "%(field)s não encontrado"
 msgid "department"
 msgstr "departamento"
 
-#: app/components/application/departments/code/post.py:60
-#: app/components/application/jobpositions/code/post.py:60
-#: app/components/application/peoples/code/post.py:60
-msgid "there are fields to check"
-msgstr "há campos para verificar"
-
 #: app/components/application/departments/code/post.py:68
 #: app/components/application/jobpositions/code/post.py:74
-#: app/components/application/peoples/code/post.py:103
+#: app/components/application/peoples/code/post.py:126
 #: app/components/application/permissions/code/post.py:113
 #, python-format
 msgid "%(field)s successfully saved"
@@ -110,7 +140,7 @@ msgstr "cargos"
 
 #: app/components/application/peoples/code/get.py:59
 #: app/components/application/peoples/code/post.py:45
-#: app/components/application/peoples/code/post.py:105
+#: app/components/application/peoples/code/post.py:128
 msgid "people"
 msgstr "pessoa"
 
@@ -157,7 +187,7 @@ msgid "sign in"
 msgstr "entrar"
 
 #: app/components/signout/get.py:19
-#: app/templates/app/base/menu/application.html:62
+#: app/templates/app/base/menu/application.html:68
 #: app/templates/app/signout/fields/signout.html:12
 msgid "sign out"
 msgstr "sair"
@@ -172,9 +202,13 @@ msgstr "sem permissão"
 msgid "%(field_labels)s already exist."
 msgstr "%(field_labels)s já existe."
 
-#: app/forms/signin.py:16 app/forms/signup.py:20
-msgid "password"
-msgstr "senha"
+#: app/forms/configuration_password.py:11
+msgid "new password"
+msgstr "nova senha"
+
+#: app/forms/configuration_password.py:15
+msgid "new password again"
+msgstr "nova senha novamente"
 
 #: app/forms/signup.py:16
 #: app/templates/app/application/peoples/code/detail/fields/provisional_code.html:17
@@ -227,6 +261,8 @@ msgid "Only numbers"
 msgstr "Somente números"
 
 #: app/models/application_peoples.py:39
+#: app/templates/app/application/configuration/about/detail/fields/fullname.html:10
+#: app/templates/app/application/configuration/about/detail/fields/jobposition_department.html:10
 #: app/templates/app/application/peoples/overview/fields/people.html:10
 #: app/templates/app/application/peoples/overview/overview.html:24
 msgid "fullname"
@@ -251,12 +287,22 @@ msgstr "%(field)s é inválido"
 msgid "cnpj"
 msgstr ""
 
+#: app/templates/app/application/configuration/about/detail/_page.html:8
 #: app/templates/app/application/departments/code/detail/_page.html:8
 #: app/templates/app/application/jobpositions/code/detail/_page.html:8
 #: app/templates/app/application/peoples/code/detail/_page.html:8
 msgid "about"
 msgstr "sobre"
 
+#: app/templates/app/application/configuration/password/detail/_page.html:8
+msgid "attempts"
+msgstr "tentativas"
+
+#: app/templates/app/application/configuration/password/detail/_page.html:8
+msgid "of"
+msgstr "de"
+
+#: app/templates/app/application/configuration/password/detail/_page.html:34
 #: app/templates/app/application/departments/code/detail/_page.html:35
 #: app/templates/app/application/jobpositions/code/detail/_page.html:36
 #: app/templates/app/application/peoples/code/detail/_page.html:40
@@ -356,8 +402,8 @@ msgid "jobpositions"
 msgstr "cargos"
 
 #: app/templates/app/application/peoples/code/detail/fields/provisional.html:5
-msgid "temporary password generated"
-msgstr "senha temporário gerada"
+msgid "provisional password generated"
+msgstr "senha provisória gerada"
 
 #: app/templates/app/application/peoples/code/detail/fields/provisional.html:12
 msgid "yes"

@@ -1,4 +1,5 @@
 __all__ = (
+    "configuration",
     "departments",
     "jobpositions",
     "departments",
@@ -7,4 +8,4 @@ __all__ = (
 )
 
 
-from . import departments, jobpositions, peoples, permissions
+from . import configuration, departments, jobpositions, peoples, permissions

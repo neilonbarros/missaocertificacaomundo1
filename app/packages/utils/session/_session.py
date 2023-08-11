@@ -41,6 +41,7 @@ class Session:
                 "lifetime": self.lifetime.strftime("%Y-%m-%d"),
                 "id": self.user.id,
                 "name": self.user.fullname,
+                "password_attempts": self.user.password_attempts,
                 "permissions": self.permissions.get(),
             },
         }

@@ -40,8 +40,8 @@ def page(
         if new_people is not None:
             del request.session["PEOPLESNEW"]
 
-        jobposition_save = request.session.get("PEOPLESSAVE", None)
-        if jobposition_save is not None:
+        people_save = request.session.get("PEOPLESSAVE", None)
+        if people_save is not None:
             del request.session["PEOPLESSAVE"]
 
         if codepeople != "new":
@@ -81,7 +81,7 @@ def page(
 
         form_people: appforms.ApplicationPeoples
         form_people = appforms.ApplicationPeoples(
-            data=jobposition_save,
+            data=people_save,
             instance=model_peoples,
         )
         form_people.is_valid()
@@ -110,23 +110,6 @@ def page(
                 ),
             },
         )
-
-        # return render(
-        #     request=request,
-        #     template_name="app/application/peoples/code/_page.html",  # noqa: E501
-        #     context={
-        #         "sessionuser": session_user,
-        #
-        #
-        #         "title": title,
-        #         "menu": True,
-        #         "codepeople": codepeople,
-        #         "type_page": type_page,
-        #         "new_people": new_people,
-        #         "form_people": form_people,
-        #         "model_jobpositions": model_jobpositions,
-        #     },
-        # )
 
     except ValueError as e:
         if str(e) in ("peoples_not_found",):

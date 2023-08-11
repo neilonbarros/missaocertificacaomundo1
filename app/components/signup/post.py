@@ -44,9 +44,9 @@ def signup(request: HttpRequest) -> HttpResponse:
         except appmodels.ApplicationPeoples.DoesNotExist:
             raise ValueError("cpf_password_invalid")
 
-        password_model: appmodels.ApplicationPasswords
+        model_passwords: appmodels.ApplicationPasswords
         try:
-            password_model = appmodels.ApplicationPasswords.objects.get(
+            model_passwords = appmodels.ApplicationPasswords.objects.get(
                 people=model_peoples,
             )
 
@@ -55,8 +55,8 @@ def signup(request: HttpRequest) -> HttpResponse:
 
         if (
             apppackages.text.hashed.is_correct_password(
-                salt=password_model.salt,
-                pw_hash=password_model.hashed,
+                salt=model_passwords.salt,
+                pw_hash=model_passwords.hashed,
                 password=password_provisional,
             )
             is False

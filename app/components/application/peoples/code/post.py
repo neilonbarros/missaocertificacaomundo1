@@ -69,34 +69,57 @@ def save(
 
         form_people.save()
 
-        provisional = request.POST.get("selectProvisionalName", None)
-        provisional_code = request.POST.get("inputProvisionalCodeName", None)
+        model_department = appmodels.ApplicationDepartments.objects.get(
+            id=model_peoples.jobposition.department.id  # type: ignore
+        )
+        model_peoples.department = model_department
+        model_peoples.save()
 
-        if settings.DEBUG is True:
-            print(__file__)
-            print(provisional)
-            print(provisional_code)
-
-        if provisional is not None and provisional == "True":
-            model_passwords = appmodels.ApplicationPasswords()
-            salt, hashed = apppackages.text.hashed.hash_new_password(provisional_code)  # type: ignore # noqa
-
+        if model_peoples.status is False:
             try:
                 model_passwords = appmodels.ApplicationPasswords.objects.get(
                     people=model_peoples,
                 )
 
-                model_passwords.provisional = True
-                model_passwords.salt = salt
-                model_passwords.hashed = hashed
+                model_passwords.delete()
 
             except appmodels.ApplicationPasswords.DoesNotExist:
+                ...
+
+        else:
+            provisional = request.POST.get(
+                "selectProvisionalName",
+                None,
+            )
+            provisional_code = request.POST.get(
+                "inputProvisionalCodeName",
+                None,
+            )
+
+            if settings.DEBUG is True:
+                print(__file__)
+                print(provisional)
+                print(provisional_code)
+
+            if provisional is not None and provisional == "True":
+                model_passwords = appmodels.ApplicationPasswords()
+                salt, hashed = apppackages.text.hashed.hash_new_password(provisional_code)  # type: ignore # noqa
+
+                try:
+                    model_passwords = (
+                        appmodels.ApplicationPasswords.objects.get(  # noqa
+                            people=model_peoples,
+                        )
+                    )
+
+                except appmodels.ApplicationPasswords.DoesNotExist:
+                    model_passwords.people = model_peoples
+
                 model_passwords.provisional = True
                 model_passwords.salt = salt
                 model_passwords.hashed = hashed
-                model_passwords.people = model_peoples
 
-            model_passwords.save()
+                model_passwords.save()
 
         djangomessages.success(
             request=request,
@@ -108,7 +131,7 @@ def save(
 
         return redirect(
             "app:application:peoples:code:view",
-            codepeople=form_people.instance.id,
+            codepeople=model_peoples.id,
         )
 
     except ValueError as e:

@@ -1,0 +1,14 @@
+{% load i18n %}
+<div class="
+        card
+        shadow
+        mb-3
+        col-md-6">
+    <div class="card-header">
+        {% translate 'about'|title %}
+    </div>
+    <div class="card-body">
+        {% include 'app/application/configuration/about/detail/fields/fullname.html' %}
+        {% include 'app/application/configuration/about/detail/fields/jobposition_department.html' %}
+    </div>
+</div>
