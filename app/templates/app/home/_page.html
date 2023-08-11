@@ -2,6 +2,92 @@
 {% load i18n %}
 {% block content %}
 
+<h2>✍️ Projeto a Ser Desenvolvido</h2>
+
+<p>Desenvolver uma aplicação para gerenciamento da Matriz SoD (que em inglês quer dizer “Segregation of Duties”), que tem como objetivo indicar os perfis de acesso conflitantes e que possam representar risco de fraude.</p>
+
+<h2>📝 Itens que serão considerados na avaliação do projeto</h2>
+
+<ol>
+    <li>Cadastro dos Sistemas;</li>
+    <li>Cadastro dos Perfis;</li>
+    <li>Cadastro da Matriz SoD;</li>
+    <li>Cadastro dos perfis dos usuários com a crítica de conflito de interesse</li>
+    <li>Consulta dos Sistemas;</li>
+    <li>Consulta dos Perfis;</li>
+    <li>Consulta da Matriz SoD;</li>
+    <li>Consulta dos perfis associados aos usuários</li>
+    <li>Todos os requisitos não-funcionais devem ser indicados, como: quais foram as</li>
+    <li>escolhas realizadas que melhoraram o desempenho do programa, ou, ainda, quais</li>
+    <li>foram os itens de interação que melhoram a experiência do usuário com o</li>
+    <li>programa;</li>
+    <li>Devem ser implementadas funcionalidades para escrita e leitura de dados em</li>
+    <li>arquivos “csv” ou “xlsx”;</li>
+    <li>Componentes de Interface Gráfica: botões, combo box e formulários;</li>
+    <li>Implementar o item “Cadastro dos Perfis dos usuários (Bônus)”. Observação:</li>
+    <li>esse item é considerado um importante diferencial desse trabalho;</li>
+    <li>O endereço do projeto deve ser enviado para o Mestre dos Magos através do SAVA.</li>
+    <li>Ao concluir o projeto, ele deve ser armazenado em um repositório no Git com:</li>
+       <ul>
+           <li>As devidas explicações do que é o projeto</li>
+           <li>O que o usuário precisa fazer para executá-lo (quais pacotes devem ser instalados)</li>
+           <li>Link para gravação no Youtube do sistema em funcionamento (duração máxima de 5 min)</li>
+       </ul>
+</ol>
+
+<h2>🌟 Bônus da Missão Certificação</h2>
+
+<h4>Cadastro dos Perfis dos Usuários</h4>
+
+<p>Para que possamos ter todos os perfis atribuídos aos usuários, gerenciados de forma centralizada, vamos precisar cadastra-los em um único repositório</p>
+<p>Este cadastro centralizado deve ter os seguintes campos:</p>
+<ul>
+    <li>CPF do Usuário</li>
+    <li>Código do Sistema (só aceitar sistemas cadastrados)</li>
+    <li>Nome do Perfil (só aceitar perfis cadastrados)</li>
+</ul>
+<p>No momento do cadastro deve-se verificar se este novo perfil, conflita com algum outro perfil que o usuário já possui.</p>
+<p>Caso exista conflito informar com qual perfil o conflito está ocorrendo e não permitir o cadastro.</p>
+
+<h2>💻Cadastros</h2>
+
+<h4>Cadastro dos Sistemas</h4>
+
+<p>Todo os sistemas que terão seus perfis de acesso gerenciados pela Matriz SoD vão precisar ser cadastrados previamente.</p>
+
+<p>Cada sistema deve ter as seguintes informações</p>
+<ul>
+    <li>Código do Sistema (15 caracteres)</li>
+    <li>Nome do Sistema (20 caracteres)</li>
+</ul>
+<p>O campo Código do Sistema deve ser a chave primária desta tabela</p>
+
+<h4>Cadastro dos perfis de acesso</h4>
+
+<p>Todo perfil de acesso de ter um nome e uma descrição bem elaborada para que ela possa representar de forma resumida todos os acessos que ele provê ao usuário. Isso facilita muito os gestores na hora de solicitar determinado perfil para um colaborador.</p>
+
+<p>Cada perfil deve ter as seguintes informações</p>
+<ul>
+    <li>Código do Sistema (só aceitar sistemas cadastrados)</li>
+    <li>Nome do Perfil (20 caracteres)</li>
+    <li>Descrição detalhada do perfil (200 caracteres)</li>
+</ul>
+
+<p>Os campos Código do Sistema e Nome do Perfil devem ser a chave primária desta tabela</p>
+
+<h4>Cadastro do Matriz SoD</h4>
+
+<p>Neste cadastro devemos indicar os perfis que possuem conflito de interesse e consequentemente não podem ser atribuídos ao mesmo usuário.</p>
+
+<p>A Matriz SoD deve ter as seguintes informações</p>
+<ul>
+    <li>Código do Sistema 1 (só aceitar sistemas cadastrados)</li>
+    <li>Nome do Perfil 1 (só aceitar perfis cadastrados)</li>
+    <li>Código do Sistema 2 (só aceitar sistemas cadastrados)</li>
+    <li>Nome do Perfil 2 (só aceitar perfis cadastrados)</li>
+</ul>
+
+<p>Todos os 4 campos desta tabela devem ser a chave primária</p>
 
 
 {% endblock content %}
