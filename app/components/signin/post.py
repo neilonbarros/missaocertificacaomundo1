@@ -54,11 +54,6 @@ def signin(request: HttpRequest) -> HttpResponse:
         except appmodels.ApplicationPasswords.DoesNotExist:
             raise ValueError("cpf_password_invalid")
 
-        if password_model.provisional is True:
-            request.session["SIGNUP_CPF"] = cpf
-            request.session.modified = True
-            return redirect("app:signup:page")
-
         if (
             apppackages.text.hashed.is_correct_password(
                 salt=password_model.salt,
@@ -68,6 +63,11 @@ def signin(request: HttpRequest) -> HttpResponse:
             is False
         ):
             raise ValueError("cpf_password_invalid")
+
+        elif password_model.provisional is True:
+            request.session["SIGNUP_CPF"] = cpf
+            request.session.modified = True
+            return redirect("app:signup:page")
 
         session_user: apppackages.utils.Session
         session_user = apppackages.utils.Session(request=request)
