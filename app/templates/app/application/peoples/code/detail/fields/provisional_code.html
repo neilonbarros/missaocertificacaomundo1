@@ -1,0 +1,46 @@
+{% load i18n %}
+{% if type_page == 'edit' %}
+    <div class="
+            form-floating
+            mb-3"
+        id="divProvisionalCodeId">
+        <input class="
+            form-control
+            mb-2"
+            type="text"
+            placeholder="x"
+            id="inputProvisionalCodeId"
+            name="inputProvisionalCodeName"
+            readonly
+            value="{{ provisional_code }}">
+        <label for="inputProvisionalCode">
+            {% translate 'password provisional'|title %}
+        </label>
+        <div class="form-text">
+            {% translate 'Copy before saving' %}
+        </div>
+    </div>
+    <script nonce="{{request.csp_nonce}}">
+        function doThings() {
+            const select = document.getElementById("selectProvisionalId");
+            const selectValue = select.value;
+            const inputProvisional = document.getElementById("divProvisionalCodeId");
+
+            console.log(selectValue);
+
+            if (selectValue == "True") {
+                inputProvisional.classList.remove("d-none");
+            } else {
+                inputProvisional.classList.add("d-none");
+            }
+        }
+        doThings();
+
+        document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("selectProvisionalId")
+            .addEventListener("change", doThings);
+        });
+
+
+    </script>
+{% endif %}

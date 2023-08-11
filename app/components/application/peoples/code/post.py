@@ -1,7 +1,9 @@
+from django.conf import settings
 from django.contrib import messages as djangomessages
 from django.http import Http404, HttpRequest, HttpResponse
 from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
+from rich import print
 
 from app import decorators as appdecorators
 from app import forms as appforms
@@ -65,69 +67,34 @@ def save(
                     )
             raise ValueError("form_is_not_valid")
 
-        model_appusers: appmodels.ApplicationUsers
-        apps: list = []
+        provisional = request.POST.get("selectProvisionalName", None)
+        provisional_code = request.POST.get("inputProvisionalCodeName", None)
 
-        model_jobposition: appmodels.ApplicationJobPositions
-        model_jobposition = form_people.cleaned_data["jobposition"]  # noqa: E501
+        if settings.DEBUG is True:
+            print(__file__)
+            print(provisional)
+            print(provisional_code)
 
-        model_jobposition = appmodels.ApplicationJobPositions.objects.get(  # noqa: E501
-            id=model_jobposition.id,
-        )
-        model_peoples.department = model_jobposition.department  # noqa: E501
+        if provisional is not None and provisional == "True":
+            model_passwords = appmodels.ApplicationPasswords()
+            salt, hashed = apppackages.text.hashed.hash_new_password(provisional_code)  # type: ignore # noqa
 
-        status: str = form_people.cleaned_data["status"]
-        cpf: str = form_people.cleaned_data["cpf"]
-
-        try:
-            model_appusers = appmodels.ApplicationUsers.objects.get(
-                id_user=model_peoples.user,
-            )
-
-            if model_appusers.apps is not None and model_appusers.apps != "":
-                apps = model_appusers.apps.split(",")
-
-            if status is None:
-                if app_name in apps:
-                    apps.remove(app_name)
-                    model_appusers.apps = ",".join(apps)
-                    model_appusers.save()
-
-            else:
-                if app_name not in apps:
-                    apps.append(app_name)
-                    model_appusers.apps = ",".join(apps)
-                    model_appusers.save()
-
-        except appmodels.ApplicationUsers.DoesNotExist:
-            if appmodels.ApplicationUsers.objects.filter(
-                cpf_user=cpf,
-            ).exists():
-                model_appusers = appmodels.ApplicationUsers.objects.get(
-                    cpf_user=cpf,
+            try:
+                model_passwords = appmodels.ApplicationPasswords.objects.get(
+                    people=model_peoples,
                 )
 
-                apps = []
-                if (
-                    model_appusers.apps is not None
-                    and model_appusers.apps != ""  # noqa: E501
-                ):  # noqa: E501
-                    apps = model_appusers.apps.split(",")
+                model_passwords.provisional = True
+                model_passwords.salt = salt
+                model_passwords.hashed = hashed
 
-                if status is True and app_name not in apps:
-                    apps.append(app_name)
-                    model_appusers.apps = ",".join(apps)
+            except appmodels.ApplicationPasswords.DoesNotExist:
+                model_passwords.provisional = True
+                model_passwords.salt = salt
+                model_passwords.hashed = hashed
+                model_passwords.people = model_peoples
 
-            else:
-                model_appusers = appmodels.ApplicationUsers()
-                model_appusers.cpf_user = cpf
-
-                if status is True:
-                    model_appusers.apps = app_name
-
-            model_appusers.save()
-
-        model_peoples.user = model_appusers.id_user
+            model_passwords.save()
 
         form_people.save()
 

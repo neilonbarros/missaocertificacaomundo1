@@ -69,6 +69,16 @@ def page(
             )
         )
 
+        model_passwords = appmodels.ApplicationPasswords()
+
+        try:
+            model_passwords = appmodels.ApplicationPasswords.objects.get(
+                people=model_peoples,
+            )
+
+        except appmodels.ApplicationPasswords.DoesNotExist:
+            ...
+
         form_people: appforms.ApplicationPeoples
         form_people = appforms.ApplicationPeoples(
             data=jobposition_save,
@@ -92,6 +102,12 @@ def page(
                 "new_people": new_people,
                 "model_jobpositions": model_jobpositions,
                 "form_people": form_people,
+                "provisional": model_passwords.provisional,
+                "provisional_code": apppackages.utils.id_generator(
+                    size=10,
+                    letter=True,
+                    digits=True,
+                ),
             },
         )
 

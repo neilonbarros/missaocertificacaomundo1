@@ -1,5 +1,5 @@
 {% load i18n %}
-<div class="form-floating mb-3 col-6">
+<div class="form-floating mb-3">
     <input class="form-control mb-2
         {% if form_people.fullname.errors %}
             is-invalid
@@ -20,7 +20,7 @@
                 list-group
                 list-group-numbered
                 list-group-item-danger">
-            {% for error in form_people.fullname.errors %}  
+            {% for error in form_people.fullname.errors %}
                 <li class="list-group-item">
                     {{ error|escape }}
                 </li>

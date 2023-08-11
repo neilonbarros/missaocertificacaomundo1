@@ -2,7 +2,8 @@
 <div class="
         card
         shadow
-        mb-3">
+        mb-3
+        col-md-6">
     <div class="card-header">
         {% translate 'about'|title %}
     </div>
@@ -22,6 +23,8 @@
         {% with 'app/application/peoples/code/detail/fields/jobposition_'|add:type_page|add:'.html' as varinclude %}{% include varinclude %}{% endwith %}
         {% include 'app/application/peoples/code/detail/fields/cpf.html' %}
         {% include 'app/application/peoples/code/detail/fields/fullname.html' %}
+        {% include 'app/application/peoples/code/detail/fields/provisional.html' %}
+        {% include 'app/application/peoples/code/detail/fields/provisional_code.html' %}
 
         {% if type_page == 'edit' %}
                 <button class="
