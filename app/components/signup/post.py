@@ -2,6 +2,7 @@ from django.contrib import messages as djangomessages
 from django.http import Http404, HttpRequest, HttpResponse
 from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
+from rich import print
 
 from app import decorators as appdecorators
 from app import forms as appforms
@@ -14,7 +15,7 @@ def signup(request: HttpRequest) -> HttpResponse:
     if not request.POST:
         raise Http404()
 
-    signup_form: appforms.SigIn = appforms.SigIn(
+    signup_form: appforms.SignUp = appforms.SignUp(
         request.POST,
     )
 
@@ -26,69 +27,81 @@ def signup(request: HttpRequest) -> HttpResponse:
             #     request=request,
             #     message=_("there are fields to check"),
             # )
-            raise ValueError("cpf_token_invalid")
+            raise ValueError("form_is_invalid")
 
         signup_cleaned = signup_form.clean()
         cpf = str(signup_cleaned.get("cpf"))
-        token = str(signup_cleaned.get("token"))
+        password_provisional = str(signup_cleaned.get("password_provisional"))
+        password = str(signup_cleaned.get("password"))
 
-        request.session["SIGNUP_CPF"] = cpf
-
-        users_model: appmodels.ApplicationUsers
+        model_peoples: appmodels.ApplicationPeoples
         try:
-            users_model = appmodels.ApplicationUsers.objects.get(
-                cpf_user=cpf,
+            model_peoples = appmodels.ApplicationPeoples.objects.get(
+                cpf=cpf,
+                status=True,
             )
 
-        except appmodels.ApplicationUsers.DoesNotExist:
-            raise ValueError("cpf_token_invalid")
+        except appmodels.ApplicationPeoples.DoesNotExist:
+            raise ValueError("cpf_password_invalid")
 
-        if appmodels.ApplicationAuths.objects.filter(
-            users_auth_id=users_model.id_user,
-        ).exists():
-            raise ValueError("user_has_access")
+        password_model: appmodels.ApplicationPasswords
+        try:
+            password_model = appmodels.ApplicationPasswords.objects.get(
+                people=model_peoples,
+            )
 
-        base32secret = request.session["SIGNUP_PYOTP_BASE32SECRET"]
+        except appmodels.ApplicationPasswords.DoesNotExist:
+            raise ValueError("cpf_password_invalid")
+
         if (
-            apppackages.py_otp.validate(
-                base32secret=base32secret,
-                token=token,
+            apppackages.text.hashed.is_correct_password(
+                salt=password_model.salt,
+                pw_hash=password_model.hashed,
+                password=password_provisional,
             )
             is False
         ):
-            raise ValueError("cpf_token_invalid")
+            raise ValueError("cpf_password_invalid")
 
-        auths_model: appmodels.ApplicationAuths = appmodels.ApplicationAuths()
-        auths_model.users_auth = users_model
-        auths_model.auth_auth = base32secret
-        auths_model.save()
+        else:
+            model_passwords = appmodels.ApplicationPasswords()
+            salt, hashed = apppackages.text.hashed.hash_new_password(password)  # type: ignore # noqa
+
+            try:
+                model_passwords = appmodels.ApplicationPasswords.objects.get(
+                    people=model_peoples,
+                )
+
+                model_passwords.provisional = False
+                model_passwords.salt = salt
+                model_passwords.hashed = hashed
+
+            except appmodels.ApplicationPasswords.DoesNotExist:
+                model_passwords.provisional = False
+                model_passwords.salt = salt
+                model_passwords.hashed = hashed
+                model_passwords.people = model_peoples
+
+            model_passwords.save()
 
         request.session["SIGNIN_CPF"] = cpf
-
-        del request.session["SIGNUP_CPF"]
-        del request.session["SIGNUP_PYOTP_BASE32SECRET"]
-
-        djangomessages.success(
-            request=request,
-            message=_("access created"),
-        )
+        request.session.modified = True
         return redirect("app:signin:page")
 
     except ValueError as e:
-        if str(e) == "cpf_token_invalid":
-            message = _("cpf/token invalid")
-            djangomessages.error(
-                request=request,
-                message=message,
-            )
-            return redirect("app:signup:page")
+        if str(e) in (
+            "form_is_invalid",
+            "cpf_password_invalid",
+        ):
+            request.session["SIGNUP_POST"] = request.POST
+            request.session.modified = True
 
-        elif str(e) == "user_has_access":
-            message = _("user already has access")
-            djangomessages.info(
-                request=request,
-                message=message,
-            )
-            return redirect("app:signin:page")
+            if str(e) in ("cpf_password_invalid",):
+                message = f"{_('cpf')}/{_('password')} {('invalid')}"
+                djangomessages.error(
+                    request=request,
+                    message=message,
+                )
+            return redirect("app:signup:page")
 
         raise ValueError(e)

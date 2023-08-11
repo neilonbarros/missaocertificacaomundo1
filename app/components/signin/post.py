@@ -17,7 +17,7 @@ def signin(request: HttpRequest) -> HttpResponse:
     if not request.POST:
         raise Http404()
 
-    signin_form: appforms.SigIn = appforms.SigIn(
+    signin_form: appforms.SignIn = appforms.SignIn(
         request.POST,
     )
 
@@ -35,9 +35,9 @@ def signin(request: HttpRequest) -> HttpResponse:
         cpf = str(signin_cleaned.get("cpf"))
         password = str(signin_cleaned.get("password"))
 
-        people_model: appmodels.ApplicationPeoples
+        model_peoples: appmodels.ApplicationPeoples
         try:
-            people_model = appmodels.ApplicationPeoples.objects.get(
+            model_peoples = appmodels.ApplicationPeoples.objects.get(
                 cpf=cpf,
                 status=True,
             )
@@ -48,11 +48,16 @@ def signin(request: HttpRequest) -> HttpResponse:
         password_model: appmodels.ApplicationPasswords
         try:
             password_model = appmodels.ApplicationPasswords.objects.get(
-                people=people_model,
+                people=model_peoples,
             )
 
         except appmodels.ApplicationPasswords.DoesNotExist:
             raise ValueError("cpf_password_invalid")
+
+        if password_model.provisional is True:
+            request.session["SIGNUP_CPF"] = cpf
+            request.session.modified = True
+            return redirect("app:signup:page")
 
         if (
             apppackages.text.hashed.is_correct_password(
@@ -67,8 +72,8 @@ def signin(request: HttpRequest) -> HttpResponse:
         session_user: apppackages.utils.Session
         session_user = apppackages.utils.Session(request=request)
         session_user.lifetime = djangotimezone.now().date()
-        session_user.user.id = people_model.id
-        session_user.user.fullname = people_model.fullname
+        session_user.user.id = model_peoples.id
+        session_user.user.fullname = model_peoples.fullname
 
         request.session.update(session_user.save())
         request.session.modified = True
@@ -88,7 +93,7 @@ def signin(request: HttpRequest) -> HttpResponse:
             request.session.modified = True
 
             if str(e) in ("cpf_password_invalid",):
-                message = _("cpf/password invalid")
+                message = f'{_("cpf")}/{_("password")} {_("invalid")}'
                 djangomessages.error(
                     request=request,
                     message=message,

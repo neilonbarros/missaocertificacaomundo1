@@ -1,14 +1,11 @@
-from pathlib import Path
-
 from django.conf import settings
 from django.http import Http404, HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.utils import translation
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext as _
 
 from app import decorators as appdecorators
 from app import forms as appforms
-from app import packages as apppackages
 
 
 @appdecorators.authenticated.not_authenticated()
@@ -16,31 +13,26 @@ def page(request: HttpRequest) -> HttpResponse:
     if request.method != "GET":
         raise Http404()
 
-    signup_form: appforms.SigIn = appforms.SigIn()
+    signup_post = {}
+    signup_form: appforms.SignUp = appforms.SignUp()
 
-    signup_cpf: str = request.session.get("SIGNUP_CPF", None)
-    pyotp_base32secret: str = request.session.get(
-        "SIGNUP_PYOTP_BASE32SECRET",
+    if request.session.get("SIGNUP_POST", None) is not None:
+        signup_post = request.session["SIGNUP_POST"]
+        del request.session["SIGNUP_POST"]
+
+        signup_form = appforms.SignUp(data=signup_post)
+        signup_form.is_valid()
+
+    elif request.session.get("SIGNUP_CPF", None) is not None:
+        signup_post = {"cpf": request.session.get("SIGNUP_CPF", None)}
+        del request.session["SIGNUP_CPF"]
+
+    signup_cpf = signup_post.get(
+        "cpf",
         None,
     )
 
-    if pyotp_base32secret is None:
-        pyotp_base32secret = apppackages.py_otp.generate_secret()
-
-        request.session["SIGNUP_PYOTP_BASE32SECRET"] = pyotp_base32secret
-
-    print(Path(__file__))
-    branch: str = str(
-        Path(__file__).resolve().parent.parent.parent.parent.parent
-    ).split("/")[
-        -1
-    ]  # noqa: E501
-    pyotp_uri: str = apppackages.py_otp.generate_uri(
-        base32secret=pyotp_base32secret,
-        app_name=branch,
-    )
-
-    title: str = _("get token")
+    title: str = _("sign in")
 
     return render(
         request=request,
@@ -50,9 +42,7 @@ def page(request: HttpRequest) -> HttpResponse:
             "html_language": translation.get_language(),
             "title": title,
             "menu": False,
-            "display_center": False,
-            "pyotp_uri": pyotp_uri,
-            "pyotp_base32secret": pyotp_base32secret,
+            "display_center": True,
             "signup_form": signup_form,
             "signup_cpf": signup_cpf,
         },

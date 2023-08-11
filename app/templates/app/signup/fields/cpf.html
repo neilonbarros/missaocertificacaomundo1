@@ -1,0 +1,15 @@
+{% load i18n %}
+<div class="form-floating mb-3">
+    <input class="form-control"
+        id="{{ signup_form.cpf.id_for_label }}"
+        name="{{ signup_form.cpf.html_name }}"
+        value="{% if signup_cpf != None %}{{ signup_cpf }}{% endif %}"
+        type="text"
+        placeholder="0000000000"
+        maxlength="11"
+        minlength="11"
+        required>
+    <label for="{{ signup_form.cpf.id_for_label }}">
+        {{ signup_form.cpf.field.label }}
+    </label>
+</div>

@@ -5,11 +5,15 @@ from django.utils.translation import gettext_lazy as _
 from app import packages as apppackages
 
 
-class SignIn(djangoforms.Form):
+class SignUp(djangoforms.Form):
     cpf = djangoforms.CharField(
         max_length=11,
         min_length=11,
         label="cpf",
+        required=True,
+    )
+    password_provisional = djangoforms.CharField(
+        label=_("password provisional"),
         required=True,
     )
     password = djangoforms.CharField(

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-10 22:40-0300\n"
+"POT-Creation-Date: 2023-08-10 23:21-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,37 +149,18 @@ msgstr "Você não tem permissão para acessar."
 msgid "home"
 msgstr ""
 
-#: app/components/signin/get.py:31 app/templates/app/signin/_page.html:12
+#: app/components/signin/get.py:35 app/components/signup/get.py:35
+#: app/templates/app/signin/_page.html:12
 #: app/templates/app/signin/_page.html:31
-#: app/templates/app/signup/_page.html:16
+#: app/templates/app/signup/_page.html:37
 msgid "sign in"
 msgstr "entrar"
-
-#: app/components/signin/post.py:91
-msgid "cpf/password invalid"
-msgstr "cpf/password inválidos"
 
 #: app/components/signout/get.py:19
 #: app/templates/app/base/menu/application.html:62
 #: app/templates/app/signout/fields/signout.html:12
 msgid "sign out"
 msgstr "sair"
-
-#: app/components/signup/get.py:43 app/templates/app/signup/_page.html:10
-msgid "get token"
-msgstr "obter token"
-
-#: app/components/signup/post.py:73
-msgid "access created"
-msgstr "acesso criado"
-
-#: app/components/signup/post.py:79
-msgid "cpf/token invalid"
-msgstr "cpf/token inválidos"
-
-#: app/components/signup/post.py:87
-msgid "user already has access"
-msgstr "usuário já possui acesso"
 
 #: app/decorators/permissions/_load.py:72
 #: app/templates/app/application/permissions/code/overview.html:50
@@ -191,9 +172,14 @@ msgstr "sem permissão"
 msgid "%(field_labels)s already exist."
 msgstr "%(field_labels)s já existe."
 
-#: app/forms/signin.py:16
+#: app/forms/signin.py:16 app/forms/signup.py:20
 msgid "password"
 msgstr "senha"
+
+#: app/forms/signup.py:16
+#: app/templates/app/application/peoples/code/detail/fields/provisional_code.html:17
+msgid "password provisional"
+msgstr "senha provisória"
 
 #: app/models/application_departments.py:21
 #: app/models/application_peoples.py:27
@@ -286,7 +272,7 @@ msgstr "Você tem certeza"
 
 #: app/templates/app/application/departments/code/remove/form/no.html:12
 #: app/templates/app/application/jobpositions/code/remove/form/no.html:12
-#: app/templates/app/application/peoples/code/detail/fields/provisional.html:10
+#: app/templates/app/application/peoples/code/detail/fields/provisional.html:11
 msgid "no"
 msgstr "não"
 
@@ -373,13 +359,9 @@ msgstr "cargos"
 msgid "temporary password generated"
 msgstr "senha temporário gerada"
 
-#: app/templates/app/application/peoples/code/detail/fields/provisional.html:11
+#: app/templates/app/application/peoples/code/detail/fields/provisional.html:12
 msgid "yes"
 msgstr "sim"
-
-#: app/templates/app/application/peoples/code/detail/fields/provisional_code.html:17
-msgid "password provisional"
-msgstr "senha provisória"
 
 #: app/templates/app/application/peoples/code/detail/fields/provisional_code.html:20
 msgid "Copy before saving"
@@ -409,38 +391,7 @@ msgstr "Oops, algo deu errado."
 msgid "back"
 msgstr "voltar"
 
-#: app/templates/app/signup/_page.html:13
-msgid "Already have an token"
-msgstr ""
-
-#: app/templates/app/signup/configure.html:10
-msgid "Configure your token"
-msgstr ""
-
-#: app/templates/app/signup/configure.html:10
-msgid "key"
-msgstr ""
-
-#: app/templates/app/signup/configure.html:26
-msgid "copy"
-msgstr ""
-
-#: app/templates/app/signup/configure.html:30
-msgid "copied"
-msgstr ""
-
-#: app/templates/app/signup/download.html:10
-msgid "Download the"
-msgstr ""
-
-#: app/templates/app/signup/download.html:21
-msgid "clicking here"
-msgstr ""
-
-#: app/templates/app/signup/form/_page.html:21
-msgid "validate"
-msgstr ""
-
-#: app/templates/app/signup/validate.html:9
-msgid "Validate your token"
-msgstr ""
+#: app/templates/app/signup/_page.html:12
+#: app/templates/app/signup/_page.html:32
+msgid "sign up"
+msgstr "inscrever"

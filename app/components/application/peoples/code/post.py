@@ -67,6 +67,8 @@ def save(
                     )
             raise ValueError("form_is_not_valid")
 
+        form_people.save()
+
         provisional = request.POST.get("selectProvisionalName", None)
         provisional_code = request.POST.get("inputProvisionalCodeName", None)
 
@@ -95,8 +97,6 @@ def save(
                 model_passwords.people = model_peoples
 
             model_passwords.save()
-
-        form_people.save()
 
         djangomessages.success(
             request=request,

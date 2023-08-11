@@ -14,14 +14,18 @@ def page(request: HttpRequest) -> HttpResponse:
         raise Http404()
 
     signin_post = {}
-    signin_form: appforms.SigIn = appforms.SigIn()
+    signin_form: appforms.SignIn = appforms.SignIn()
 
     if request.session.get("SIGNIN_POST", None) is not None:
         signin_post = request.session["SIGNIN_POST"]
         del request.session["SIGNIN_POST"]
 
-        signin_form = appforms.SigIn(data=signin_post)
+        signin_form = appforms.SignIn(data=signin_post)
         signin_form.is_valid()
+
+    elif request.session.get("SIGNIN_CPF", None) is not None:
+        signin_post = {"cpf": request.session.get("SIGNIN_CPF", None)}
+        del request.session["SIGNIN_CPF"]
 
     signin_cpf = signin_post.get(
         "cpf",

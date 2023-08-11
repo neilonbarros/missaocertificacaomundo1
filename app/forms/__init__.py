@@ -2,10 +2,12 @@ __all__ = (
     "ApplicationDepartment",
     "ApplicationJobPositions",
     "ApplicationPeoples",
-    "SigIn",
+    "SignIn",
+    "SignUp",
 )
 
 from .application_department import ApplicationDepartment
 from .application_jobposition import ApplicationJobPositions
 from .application_people import ApplicationPeoples
-from .signin import SigIn
+from .signin import SignIn
+from .signup import SignUp

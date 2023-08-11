@@ -6,7 +6,8 @@
     </label>
     <select class="form-select mb-2"
         id="selectProvisionalId"
-        name="selectProvisionalName">
+        name="selectProvisionalName"
+        {% if type_page == 'view' %} disabled {% endif %}>
         <option value="False" selected>{% translate 'no'|title %}</option>
         <option value="True" {% if provisional == True %} selected {% endif %}>{% translate 'yes'|title %}</option>
     </select>
