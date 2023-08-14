@@ -4,7 +4,7 @@
         card
         shadow
         mb-3
-        col-md-6">
+        col-12">
     <div class="card-header">
         {% translate 'permissions'|title %}
     </div>
@@ -44,25 +44,25 @@
                     <tr>
                         <th scope="row">
                             <select class="form-select"
-                                id="{{ row.nivel1.name }}_{{ row.nivel1.nivel2.name }}{% if row.nivel1.nivel2.nivel3.name != "" %}_{{ row.nivel1.nivel2.nivel3.name }}{% if row.nivel1.nivel2.nivel3.nivel4.name != "" %}_{{ row.nivel1.nivel2.nivel3.nivel4.name }}{% if row.nivel1.nivel2.nivel3.nivel4.nivel5.name != "" %}_{{ row.nivel1.nivel2.nivel3.nivel4.nivel5.name }}{% if row.nivel1.nivel2.nivel3.nivel4.nivel5.nivel6.name != "" %}_{{ row.nivel1.nivel2.nivel3.nivel4.nivel5.nivel6.name }}{% endif %}{% endif %}{% endif %}{% endif %}"
-                                name="{{ row.nivel1.name }}_{{ row.nivel1.nivel2.name }}{% if row.nivel1.nivel2.nivel3.name != "" %}_{{ row.nivel1.nivel2.nivel3.name }}{% if row.nivel1.nivel2.nivel3.nivel4.name != "" %}_{{ row.nivel1.nivel2.nivel3.nivel4.name }}{% if row.nivel1.nivel2.nivel3.nivel4.nivel5.name != "" %}_{{ row.nivel1.nivel2.nivel3.nivel4.nivel5.name }}{% if row.nivel1.nivel2.nivel3.nivel4.nivel5.nivel6.name != "" %}_{{ row.nivel1.nivel2.nivel3.nivel4.nivel5.nivel6.name }}{% endif %}{% endif %}{% endif %}{% endif %}"
+                                id="{{ row.nivel1 }}_{{ row.nivel2 }}{% if row.nivel3 != None %}_{{ row.nivel3 }}{% if row.nivel4 != None %}_{{ row.nivel4 }}{% if row.nivel5 != None %}_{{ row.nivel5 }}{% if row.nivel6 != None %}_{{ row.nivel6 }}{% endif %}{% endif %}{% endif %}{% endif %}"
+                                name="{{ row.nivel1 }}_{{ row.nivel2 }}{% if row.nivel3 != None %}_{{ row.nivel3 }}{% if row.nivel4 != None %}_{{ row.nivel4 }}{% if row.nivel5 != None %}_{{ row.nivel5 }}{% if row.nivel6 != None %}_{{ row.nivel6 }}{% endif %}{% endif %}{% endif %}{% endif %}"
                                 {% if type_page == 'view' %} disabled {% endif %}>
                                 <option value="nopermission">{% translate 'no permission' %}</option>
 
                                 {% for type in row.types %}
-                                    <option id="{{ row.nivel1.name }}_{{ row.nivel1.nivel2.name }}{% if row.nivel1.nivel2.nivel3.name != "" %}_{{ row.nivel1.nivel2.nivel3.name }}{% if row.nivel1.nivel2.nivel3.nivel4.name != "" %}_{{ row.nivel1.nivel2.nivel3.nivel4.name }}{% if row.nivel1.nivel2.nivel3.nivel4.nivel5.name != "" %}_{{ row.nivel1.nivel2.nivel3.nivel4.nivel5.name }}{% if row.nivel1.nivel2.nivel3.nivel4.nivel5.nivel6.name != "" %}_{{ row.nivel1.nivel2.nivel3.nivel4.nivel5.nivel6.name }}{% endif %}{% endif %}{% endif %}{% endif %}:{{ type }}"
+                                    <option id="{{ row.nivel1 }}_{{ row.nivel2 }}{% if row.nivel3 != None %}_{{ row.nivel3 }}{% if row.nivel4 != None %}_{{ row.nivel4 }}{% if row.nivel5 != None %}_{{ row.nivel5 }}{% if row.nivel6 != None %}_{{ row.nivel6 }}{% endif %}{% endif %}{% endif %}{% endif %}:{{ type }}"
                                         value="{{ type }}">
                                         {% translate type %}
                                     </option>
                                 {% endfor %}
                             </select>
                         </th>
-                        <td>{% translate row.nivel1.name %}</td>
-                        <td>{% translate row.nivel1.nivel2.name %}</td>
-                        <td>{% translate row.nivel1.nivel2.nivel3.name %}</td>
-                        <td>{% translate row.nivel1.nivel2.nivel3.nivel4.name %}</td>
-                        <td>{% translate row.nivel1.nivel2.nivel3.nivel4.nivel5.name %}</td>
-                        <td>{% translate row.nivel1.nivel2.nivel3.nivel4.nivel5.nivel6.name %}</td>
+                        <td>{% translate row.nivel1 %}</td>
+                        <td>{% if row.nivel2 != None %}{% translate row.nivel2 %}{% endif %}</td>
+                        <td>{% if row.nivel3 != None %}{% translate row.nivel3 %}{% endif %}</td>
+                        <td>{% if row.nivel4 != None %}{% translate row.nivel4 %}{% endif %}</td>
+                        <td>{% if row.nivel5 != None %}{% translate row.nivel5 %}{% endif %}</td>
+                        <td>{% if row.nivel6 != None %}{% translate row.nivel6 %}{% endif %}</td>
                     </tr>
                 {% endfor %}
             </tbody>

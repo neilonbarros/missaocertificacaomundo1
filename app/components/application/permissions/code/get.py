@@ -83,129 +83,57 @@ def page(
         permissions += [
             {
                 "types": ["view", "edit"],
-                "nivel1": {
-                    "name": "application",
-                    "nivel2": {
-                        "name": "departments",
-                        "nivel3": {
-                            "name": "code",
-                            "nivel4": {
-                                "name": "",
-                                "nivel5": {
-                                    "name": "",
-                                    "nivel6": {
-                                        "name": "",
-                                    },
-                                },
-                            },
-                        },
-                    },
-                },
+                "nivel1": "application",
+                "nivel2": "departments",
+                "nivel3": "code",
+                "nivel4": None,
+                "nivel5": None,
+                "nivel6": None,
             },
             {
                 "types": ["edit"],
-                "nivel1": {
-                    "name": "application",
-                    "nivel2": {
-                        "name": "departments",
-                        "nivel3": {
-                            "name": "code",
-                            "nivel4": {
-                                "name": "remove",
-                                "nivel5": {
-                                    "name": "",
-                                    "nivel6": {
-                                        "name": "",
-                                    },
-                                },
-                            },
-                        },
-                    },
-                },
+                "nivel1": "application",
+                "nivel2": "departments",
+                "nivel3": "code",
+                "nivel4": "remove",
+                "nivel5": None,
+                "nivel6": None,
             },
             {
                 "types": ["view", "edit"],
-                "nivel1": {
-                    "name": "application",
-                    "nivel2": {
-                        "name": "jobpositions",
-                        "nivel3": {
-                            "name": "code",
-                            "nivel4": {
-                                "name": "",
-                                "nivel5": {
-                                    "name": "",
-                                    "nivel6": {
-                                        "name": "",
-                                    },
-                                },
-                            },
-                        },
-                    },
-                },
+                "nivel1": "application",
+                "nivel2": "jobpositions",
+                "nivel3": "code",
+                "nivel4": None,
+                "nivel5": None,
+                "nivel6": None,
             },
             {
                 "types": ["edit"],
-                "nivel1": {
-                    "name": "application",
-                    "nivel2": {
-                        "name": "jobpositions",
-                        "nivel3": {
-                            "name": "code",
-                            "nivel4": {
-                                "name": "remove",
-                                "nivel5": {
-                                    "name": "",
-                                    "nivel6": {
-                                        "name": "",
-                                    },
-                                },
-                            },
-                        },
-                    },
-                },
+                "nivel1": "application",
+                "nivel2": "jobpositions",
+                "nivel3": "code",
+                "nivel4": "remove",
+                "nivel5": None,
+                "nivel6": None,
             },
             {
                 "types": ["view", "edit"],
-                "nivel1": {
-                    "name": "application",
-                    "nivel2": {
-                        "name": "permissions",
-                        "nivel3": {
-                            "name": "code",
-                            "nivel4": {
-                                "name": "",
-                                "nivel5": {
-                                    "name": "",
-                                    "nivel6": {
-                                        "name": "",
-                                    },
-                                },
-                            },
-                        },
-                    },
-                },
+                "nivel1": "application",
+                "nivel2": "permissions",
+                "nivel3": "code",
+                "nivel4": None,
+                "nivel5": None,
+                "nivel6": None,
             },
             {
                 "types": ["view", "edit"],
-                "nivel1": {
-                    "name": "application",
-                    "nivel2": {
-                        "name": "peoples",
-                        "nivel3": {
-                            "name": "code",
-                            "nivel4": {
-                                "name": "",
-                                "nivel5": {
-                                    "name": "",
-                                    "nivel6": {
-                                        "name": "",
-                                    },
-                                },
-                            },
-                        },
-                    },
-                },
+                "nivel1": "application",
+                "nivel2": "peoples",
+                "nivel3": "code",
+                "nivel4": None,
+                "nivel5": None,
+                "nivel6": None,
             },
         ]
 
