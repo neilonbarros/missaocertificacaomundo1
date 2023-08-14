@@ -57,7 +57,7 @@
                                 {% endfor %}
                             </select>
                         </th>
-                        <td>{% translate row.nivel1 %}</td>
+                        <td>{% if row.nivel1 != None %}{% translate row.nivel1 %}{% endif %}</td>
                         <td>{% if row.nivel2 != None %}{% translate row.nivel2 %}{% endif %}</td>
                         <td>{% if row.nivel3 != None %}{% translate row.nivel3 %}{% endif %}</td>
                         <td>{% if row.nivel4 != None %}{% translate row.nivel4 %}{% endif %}</td>
