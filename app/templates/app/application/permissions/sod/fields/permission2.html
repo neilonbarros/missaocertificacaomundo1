@@ -1,0 +1,50 @@
+{% load i18n %}
+<div class="
+        mb-3
+        col-sm-5">
+    <label class="form-label
+        {% if form_sod.permission2.errors %}
+            text-danger
+        {% endif %}"
+        for="{{ form_sod.permission2.id_for_label }}">
+        {{ form_sod.permission2.field.label }}
+    </label>
+    <select class="form-select mb-2
+        {% if form_sod.permission2.errors %}
+            is-invalid
+        {% endif %}"
+        id="{{ form_sod.permission2.id_for_label }}"
+        name="{{ form_sod.permission2.html_name }}"
+        aria-label="{{ form_sod.permission2.help_text }}">
+        <option value="0"
+            selected
+            disabled>
+            {% translate 'select'|title %}
+        </option>
+        {% for row in permissions %}
+            <option value="{{ row }}"
+                {% if form_sod.permission2.value == row %}
+                    selected
+                {% endif %}>
+                {{ row }}
+            </option>
+        {% endfor %}
+    </select>
+    {% if form_sod.permission2.errors %}
+        <ol class="
+                list-group
+                list-group-numbered
+                list-group-item-danger">
+            {% for error in form_sod.permission2.errors %}
+                <li class="list-group-item">
+                    {{ error|escape }}
+                </li>
+            {% endfor %}
+        </ol>
+        </ul>
+    {% else %}
+        <div class="form-text">
+            {{ form_sod.permission2.help_text }}
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,68 @@
+{% load i18n %}
+
+<div class="
+        card
+        shadow
+        mb-3
+        col-12">
+    <div class="card-header">
+        SoD
+    </div>
+    <div class="
+        card-body">
+        <table class="
+                table
+                table-borderless
+                table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        {% translate 'permission'|title %} 1
+                    </th>
+                    <th class="text-center"
+                        scope="col">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+                        </svg>
+                    </th>
+                    <th scope="col">
+                        {% translate 'permission'|title %} 2
+                    </th>
+                    {% if 'application_permissions_sod:edit' in sessionuser.permissions.type %}
+                        <th class="text-center"
+                            scope="col">
+                            {% translate 'action'|title %}
+                        </th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in sods %}
+                    <tr>
+                        <td>{{ row.permission1 }}</td>
+                        <td class="text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+                            </svg>
+                        </td>
+                        <td>{{ row.permission2 }}</td>
+                        {% if 'application_permissions_sod:edit' in sessionuser.permissions.type %}
+                            <td class="text-center">
+                                <a class="text-danger"
+                                    href="{% url 'app:application:permissions:sod:remove:page' codesod=row.id %}">
+                                    {% translate 'delete'|title %}
+                                </a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan=100>
+                            {% translate 'no results'|title %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

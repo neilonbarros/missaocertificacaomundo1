@@ -1,3 +1,5 @@
+import os
+
 from django.conf import settings
 from django.contrib import messages as djangomessages
 from django.http import Http404, HttpRequest, HttpResponse
@@ -12,7 +14,7 @@ from app import packages as apppackages
 
 @appdecorators.authenticated.is_authenticated()
 @appdecorators.permissions.validate(
-    file=__file__,
+    file=os.path.dirname(__file__),
 )
 def page(
     request: HttpRequest,

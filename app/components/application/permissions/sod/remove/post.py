@@ -17,56 +17,61 @@ from app import packages as apppackages
 def remove(
     request: HttpRequest,
     session_user: apppackages.utils.Session,
-    codedepartment: str,
+    codesod: str,
     type_page: str,
 ) -> HttpResponse:
     if request.method != "POST":
         raise Http404()
 
-    if codedepartment == "new":
-        return redirect(
-            "app:application:departments:page",
-            codedepartment=codedepartment,
-            type="edit",
-        )
-
     try:
+        model_sod: appmodels.ApplicationPermissionsSoD
         try:
-            model_departments: appmodels.ApplicationDepartments
-            model_departments = (
-                appmodels.ApplicationDepartments.objects.get(  # noqa: E501
-                    id=codedepartment,
-                )
+            model_sod = appmodels.ApplicationPermissionsSoD.objects.get(  # noqa: E501
+                id=codesod,
             )
 
-            model_departments.delete()
-
-        except appmodels.ApplicationDepartments.DoesNotExist:
+        except appmodels.ApplicationPermissionsSoD.DoesNotExist:
             djangomessages.error(
                 request=request,
                 message=_("%(field)s not found")
                 % {
-                    "field": _("department"),
+                    "field": "sod",
                 },
             )
-            raise ValueError("departments_not_found")
+            raise ValueError("sod_not_found")
+
+        permission_sod: str = model_sod.permission_sod
+        permission_sod_split = permission_sod.split("_")
+        permission1: str = (
+            f"{permission_sod_split[0]}_{permission_sod_split[1]}"  # noqa
+        )
+        permission2: str = (
+            f"{permission_sod_split[2]}_{permission_sod_split[3]}"  # noqa
+        )
+
+        appmodels.ApplicationPermissionsSoD.objects.filter(
+            permission_sod__in=[
+                f"{permission1}_{permission2}",
+                f"{permission2}_{permission1}",
+            ]
+        ).delete()
 
         djangomessages.success(
             request=request,
             message=_("%(field)s successfully removed")
             % {
-                "field": _("department"),
+                "field": "sod",
             },
         )
 
         return redirect(
-            "app:application:departments:page",
+            "app:application:permissions:sod:page",
         )
 
     except ValueError as e:
-        if str(e) in ("departments_not_found",):
+        if str(e) in ("sod_not_found",):
             return redirect(
-                "app:application:departments:page",
+                "app:application:permissions:sod:page",
             )
 
         raise ValueError(e)

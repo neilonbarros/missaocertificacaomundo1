@@ -1,0 +1,17 @@
+{% load i18n %}
+<!-- Form -->
+<form action="{% url 'app:application:permissions:sod:remove:post' codesod=codesod %}"
+    method="post"
+    id="formRemoveId">
+
+    {% csrf_token %}
+    {% for hidden in remove_form.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+
+    <div class="grid gap-y-4">
+        {% include 'app/application/permissions/sod/remove/form/no.html' %}
+        {% include 'app/application/permissions/sod/remove/form/remove.html' %}
+    </div>
+</form>
+<!-- End Form -->

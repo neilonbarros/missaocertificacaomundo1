@@ -1,0 +1,72 @@
+{% load i18n %}
+{% if 'application_permissions_sod:edit' in sessionuser.permissions.type %}
+    <div class="
+            card
+            shadow
+            mb-3
+            col-12">
+        <div class="card-header">
+            SoD
+        </div>
+        <div class="card-body">
+            <!-- Form -->
+            <form action="{% url 'app:application:permissions:sod:save' %}"
+                method="post"
+                id="formIncludeId">
+                {% csrf_token %}
+                {% for hidden in form_sod.hidden_fields %}
+                    {{ hidden }}
+                {% endfor %}
+
+                <div class="row">
+                    {% include 'app/application/permissions/sod/fields/permission1.html' %}
+                    <div class="
+                            col-1
+                            text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+                        </svg>
+                    </div>
+                    {% include 'app/application/permissions/sod/fields/permission2.html' %}
+                </div>
+
+                <button class="
+                        btn
+                        btn-primary"
+                    type="button"
+                    id="buttonIncludeId"
+                    name="buttonIncludeName"
+                    value="buttonIncludeId">
+
+                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+
+                    {% translate "include"|title %}
+                </button>
+                <script nonce="{{request.csp_nonce}}">
+                    document.addEventListener("DOMContentLoaded", function () {
+                    document.getElementById("buttonIncludeId")
+                        .addEventListener("click", function doThings() {
+                                const thisId = this.id;
+                                const button = document.getElementById(thisId);
+                                const buttonSpan = button.getElementsByTagName("span")[0];
+
+                                buttonSpan.classList.remove("d-none");
+
+                                const buttons = document.getElementsByTagName("button");
+
+                                for (const button of buttons) {
+                                    button.disabled = true;
+                                    button.classList.add("cursor-not-allowed");
+                                }
+
+                                const form = document.getElementById(thisId.replace("button", "form"));
+                                form.submit();
+                            }
+                        );
+                    });
+                </script>
+            </form>
+            <!-- End Form -->
+        </div>
+    </div>
+{% endif %}

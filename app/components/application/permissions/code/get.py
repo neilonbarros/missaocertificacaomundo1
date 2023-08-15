@@ -9,6 +9,146 @@ from app import decorators as appdecorators
 from app import models as appmodels
 from app import packages as apppackages
 
+permissions = []
+
+permissions += [
+    {
+        "types": ["view"],
+        "nivel1": "menu1",
+        "nivel2": "submenu1",
+        "nivel3": None,
+        "nivel4": None,
+        "nivel5": None,
+        "nivel6": None,
+    },
+    {
+        "types": ["view"],
+        "nivel1": "menu1",
+        "nivel2": "submenu2",
+        "nivel3": None,
+        "nivel4": None,
+        "nivel5": None,
+        "nivel6": None,
+    },
+    {
+        "types": ["view"],
+        "nivel1": "menu1",
+        "nivel2": "submenu3",
+        "nivel3": None,
+        "nivel4": None,
+        "nivel5": None,
+        "nivel6": None,
+    },
+]
+
+permissions += [
+    {
+        "types": ["view"],
+        "nivel1": "menu2",
+        "nivel2": "submenu1",
+        "nivel3": None,
+        "nivel4": None,
+        "nivel5": None,
+        "nivel6": None,
+    },
+    {
+        "types": ["view"],
+        "nivel1": "menu2",
+        "nivel2": "submenu2",
+        "nivel3": None,
+        "nivel4": None,
+        "nivel5": None,
+        "nivel6": None,
+    },
+    {
+        "types": ["view"],
+        "nivel1": "menu2",
+        "nivel2": "submenu3",
+        "nivel3": None,
+        "nivel4": None,
+        "nivel5": None,
+        "nivel6": None,
+    },
+]
+
+permissions += [
+    {
+        "types": ["view"],
+        "nivel1": "menu3",
+        "nivel2": "submenu1",
+        "nivel3": None,
+        "nivel4": None,
+        "nivel5": None,
+        "nivel6": None,
+    },
+    {
+        "types": ["view"],
+        "nivel1": "menu3",
+        "nivel2": "submenu2",
+        "nivel3": None,
+        "nivel4": None,
+        "nivel5": None,
+        "nivel6": None,
+    },
+    {
+        "types": ["view"],
+        "nivel1": "menu3",
+        "nivel2": "submenu3",
+        "nivel3": None,
+        "nivel4": None,
+        "nivel5": None,
+        "nivel6": None,
+    },
+]
+
+permissions += [
+    {
+        "types": ["view", "edit"],
+        "nivel1": "application",
+        "nivel2": "departments",
+        "nivel3": "code",
+        "nivel4": None,
+        "nivel5": None,
+        "nivel6": None,
+    },
+    {
+        "types": ["view", "edit"],
+        "nivel1": "application",
+        "nivel2": "jobpositions",
+        "nivel3": "code",
+        "nivel4": None,
+        "nivel5": None,
+        "nivel6": None,
+    },
+    {
+        "types": ["view", "edit"],
+        "nivel1": "application",
+        "nivel2": "permissions",
+        "nivel3": "code",
+        "nivel4": None,
+        "nivel5": None,
+        "nivel6": None,
+    },
+    {
+        "types": ["view", "edit"],
+        "nivel1": "application",
+        "nivel2": "permissions",
+        "nivel3": "sod",
+        "nivel4": None,
+        "nivel5": None,
+        "nivel6": None,
+    },
+    {
+        "types": ["view", "edit"],
+        "nivel1": "application",
+        "nivel2": "peoples",
+        "nivel3": "code",
+        "nivel4": None,
+        "nivel5": None,
+        "nivel6": None,
+    },
+]
+
 
 @appdecorators.authenticated.is_authenticated()
 @appdecorators.permissions.validate(
@@ -77,65 +217,6 @@ def page(
 
         for x in model_permissions:
             result_permissions.append(x.permission)
-
-        permissions = []
-
-        permissions += [
-            {
-                "types": ["view", "edit"],
-                "nivel1": "application",
-                "nivel2": "departments",
-                "nivel3": "code",
-                "nivel4": None,
-                "nivel5": None,
-                "nivel6": None,
-            },
-            {
-                "types": ["edit"],
-                "nivel1": "application",
-                "nivel2": "departments",
-                "nivel3": "code",
-                "nivel4": "remove",
-                "nivel5": None,
-                "nivel6": None,
-            },
-            {
-                "types": ["view", "edit"],
-                "nivel1": "application",
-                "nivel2": "jobpositions",
-                "nivel3": "code",
-                "nivel4": None,
-                "nivel5": None,
-                "nivel6": None,
-            },
-            {
-                "types": ["edit"],
-                "nivel1": "application",
-                "nivel2": "jobpositions",
-                "nivel3": "code",
-                "nivel4": "remove",
-                "nivel5": None,
-                "nivel6": None,
-            },
-            {
-                "types": ["view", "edit"],
-                "nivel1": "application",
-                "nivel2": "permissions",
-                "nivel3": "code",
-                "nivel4": None,
-                "nivel5": None,
-                "nivel6": None,
-            },
-            {
-                "types": ["view", "edit"],
-                "nivel1": "application",
-                "nivel2": "peoples",
-                "nivel3": "code",
-                "nivel4": None,
-                "nivel5": None,
-                "nivel6": None,
-            },
-        ]
 
         return render(
             request=request,

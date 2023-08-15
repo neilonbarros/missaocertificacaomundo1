@@ -1,4 +1,3 @@
-import os
 from typing import Any, Optional
 
 from django.conf import settings
@@ -71,7 +70,7 @@ def page(
     if search_permissions_post is True:
         overview_jobpositions = appmodels.ApplicationJobPositions.objects.filter(
             id__gt=0
-        )  # noqa: E501  # noqa: E501
+        )  # noqa: E501
 
         if search_department is not None or search_jobposition is not None:
             if search_department is not None:
@@ -104,7 +103,7 @@ def page(
 
     return render(
         request=request,
-        template_name="app/application/permissions/_page.html",  # noqa
+        template_name="app/application/permissions/page/_page.html",  # noqa
         context={
             "settings_debug": settings.DEBUG,
             "sessionuser": session_user,
@@ -112,6 +111,7 @@ def page(
             "title": title,
             "menu": True,
             "display_center": False,
+            "options": "app/application/permissions/page/options/_page.html",  # noqa
             "search_permissions_post": search_permissions_post,
             "search_department": search_department,
             "search_jobposition": search_jobposition,

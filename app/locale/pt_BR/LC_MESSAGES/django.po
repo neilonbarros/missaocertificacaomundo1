@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-11 10:45-0300\n"
+"POT-Creation-Date: 2023-08-15 14:03-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,6 +27,7 @@ msgstr "configuração"
 #: app/components/application/departments/code/post.py:60
 #: app/components/application/jobpositions/code/post.py:60
 #: app/components/application/peoples/code/post.py:60
+#: app/components/application/permissions/sod/post.py:33
 msgid "there are fields to check"
 msgstr "há campos para verificar"
 
@@ -65,17 +66,19 @@ msgstr "novo"
 
 #: app/components/application/departments/code/get.py:59
 #: app/components/application/departments/code/post.py:43
-#: app/components/application/departments/code/remove/get.py:44
-#: app/components/application/departments/code/remove/post.py:45
+#: app/components/application/departments/code/remove/get.py:46
+#: app/components/application/departments/code/remove/post.py:47
 #: app/components/application/jobpositions/code/get.py:60
 #: app/components/application/jobpositions/code/post.py:43
-#: app/components/application/jobpositions/code/remove/get.py:47
-#: app/components/application/jobpositions/code/remove/post.py:44
+#: app/components/application/jobpositions/code/remove/get.py:49
+#: app/components/application/jobpositions/code/remove/post.py:46
 #: app/components/application/peoples/code/get.py:57
 #: app/components/application/peoples/code/post.py:43
-#: app/components/application/permissions/code/get.py:43
-#: app/components/application/permissions/code/get.py:62
+#: app/components/application/permissions/code/get.py:183
+#: app/components/application/permissions/code/get.py:202
 #: app/components/application/permissions/code/post.py:36
+#: app/components/application/permissions/sod/remove/get.py:37
+#: app/components/application/permissions/sod/remove/post.py:36
 #, python-format
 msgid "%(field)s not found"
 msgstr "%(field)s não encontrado"
@@ -83,9 +86,9 @@ msgstr "%(field)s não encontrado"
 #: app/components/application/departments/code/get.py:61
 #: app/components/application/departments/code/post.py:45
 #: app/components/application/departments/code/post.py:70
-#: app/components/application/departments/code/remove/get.py:46
-#: app/components/application/departments/code/remove/post.py:47
-#: app/components/application/departments/code/remove/post.py:56
+#: app/components/application/departments/code/remove/get.py:48
+#: app/components/application/departments/code/remove/post.py:49
+#: app/components/application/departments/code/remove/post.py:58
 #: app/models/application_departments.py:19
 #: app/models/application_departments.py:23
 #: app/models/application_jobpositions.py:35
@@ -96,8 +99,8 @@ msgstr "%(field)s não encontrado"
 #: app/templates/app/application/jobpositions/overview/overview.html:27
 #: app/templates/app/application/peoples/overview/fields/department.html:6
 #: app/templates/app/application/peoples/overview/overview.html:30
-#: app/templates/app/application/permissions/overview/fields/department.html:6
-#: app/templates/app/application/permissions/overview/overview.html:27
+#: app/templates/app/application/permissions/page/overview/fields/department.html:6
+#: app/templates/app/application/permissions/page/overview/overview.html:27
 msgid "department"
 msgstr "departamento"
 
@@ -109,8 +112,9 @@ msgstr "departamento"
 msgid "%(field)s successfully saved"
 msgstr "%(field)s salvo com sucesso"
 
-#: app/components/application/departments/code/remove/post.py:54
-#: app/components/application/jobpositions/code/remove/post.py:53
+#: app/components/application/departments/code/remove/post.py:56
+#: app/components/application/jobpositions/code/remove/post.py:55
+#: app/components/application/permissions/sod/remove/post.py:61
 #, python-format
 msgid "%(field)s successfully removed"
 msgstr "%(field)s removido com sucesso"
@@ -124,11 +128,11 @@ msgstr "departamentos"
 #: app/components/application/jobpositions/code/get.py:62
 #: app/components/application/jobpositions/code/post.py:45
 #: app/components/application/jobpositions/code/post.py:76
-#: app/components/application/jobpositions/code/remove/get.py:49
-#: app/components/application/jobpositions/code/remove/post.py:46
-#: app/components/application/jobpositions/code/remove/post.py:55
-#: app/components/application/permissions/code/get.py:45
-#: app/components/application/permissions/code/get.py:64
+#: app/components/application/jobpositions/code/remove/get.py:51
+#: app/components/application/jobpositions/code/remove/post.py:48
+#: app/components/application/jobpositions/code/remove/post.py:57
+#: app/components/application/permissions/code/get.py:185
+#: app/components/application/permissions/code/get.py:204
 #: app/components/application/permissions/code/post.py:38
 #: app/models/application_peoples.py:66 app/models/application_peoples.py:69
 msgid "job position"
@@ -154,14 +158,26 @@ msgstr "pessoas"
 #: app/models/application_permissions.py:25
 #: app/models/application_permissions.py:28
 #: app/templates/app/application/permissions/code/overview.html:20
+#: app/templates/app/application/permissions/sod/overview.html:20
+#: app/templates/app/application/permissions/sod/overview.html:29
 msgid "permission"
 msgstr "permissão"
 
-#: app/components/application/permissions/get.py:103
+#: app/components/application/permissions/get.py:102
 #: app/templates/app/application/permissions/code/overview.html:9
 #: app/templates/app/base/menu/application.html:44
 msgid "permissions"
 msgstr "permissões"
+
+#: app/components/application/permissions/sod/post.py:51
+#, python-format
+msgid "%(field)s already exists"
+msgstr "Este %(field)s já existe"
+
+#: app/components/application/permissions/sod/post.py:80
+#, python-format
+msgid "%(field)s successfully included"
+msgstr "%(field)s incluído com sucesso"
 
 #: app/components/errors/_custom_bad_request_view.py:13
 msgid "The request cannot be fulfilled."
@@ -202,6 +218,20 @@ msgstr "sem permissão"
 msgid "%(field_labels)s already exist."
 msgstr "%(field_labels)s já existe."
 
+#: app/forms/application_permissions_sod.py:11
+#: app/forms/application_permissions_sod.py:16
+#: app/templates/app/application/jobpositions/code/detail/fields/department_edit.html:21
+#: app/templates/app/application/peoples/code/detail/fields/jobposition_edit.html:21
+#: app/templates/app/application/peoples/code/detail/fields/status.html:35
+#: app/templates/app/application/permissions/sod/fields/permission1.html:22
+#: app/templates/app/application/permissions/sod/fields/permission2.html:22
+msgid "select"
+msgstr "selecione"
+
+#: app/forms/application_permissions_sod.py:27
+msgid "identical fields"
+msgstr "campos idênticos"
+
 #: app/forms/configuration_password.py:11
 msgid "new password"
 msgstr "nova senha"
@@ -233,8 +263,8 @@ msgstr "Mínimo %(minimum_characters)s caracteres"
 #: app/templates/app/application/jobpositions/overview/overview.html:24
 #: app/templates/app/application/peoples/overview/fields/jobposition.html:6
 #: app/templates/app/application/peoples/overview/overview.html:27
-#: app/templates/app/application/permissions/overview/fields/jobposition.html:6
-#: app/templates/app/application/permissions/overview/overview.html:24
+#: app/templates/app/application/permissions/page/overview/fields/jobposition.html:6
+#: app/templates/app/application/permissions/page/overview/overview.html:24
 msgid "jobposition"
 msgstr "cargo"
 
@@ -312,6 +342,7 @@ msgstr "salvar"
 
 #: app/templates/app/application/departments/code/remove/_page.html:14
 #: app/templates/app/application/jobpositions/code/remove/_page.html:14
+#: app/templates/app/application/permissions/sod/remove/_page.html:14
 #: app/templates/app/signout/_page.html:14
 msgid "Are you sure"
 msgstr "Você tem certeza"
@@ -319,6 +350,7 @@ msgstr "Você tem certeza"
 #: app/templates/app/application/departments/code/remove/form/no.html:12
 #: app/templates/app/application/jobpositions/code/remove/form/no.html:12
 #: app/templates/app/application/peoples/code/detail/fields/provisional.html:11
+#: app/templates/app/application/permissions/sod/remove/form/no.html:12
 msgid "no"
 msgstr "não"
 
@@ -326,6 +358,7 @@ msgstr "não"
 #: app/templates/app/application/departments/options/remove.html:28
 #: app/templates/app/application/jobpositions/code/remove/form/remove.html:12
 #: app/templates/app/application/jobpositions/options/remove.html:28
+#: app/templates/app/application/permissions/sod/remove/form/remove.html:12
 msgid "remove"
 msgstr "remover"
 
@@ -343,7 +376,7 @@ msgstr "editar"
 #: app/templates/app/application/peoples/options/view.html:28
 #: app/templates/app/application/peoples/overview/overview.html:39
 #: app/templates/app/application/permissions/code/options/view.html:28
-#: app/templates/app/application/permissions/overview/overview.html:36
+#: app/templates/app/application/permissions/page/overview/overview.html:36
 msgid "view"
 msgstr "ver"
 
@@ -353,8 +386,8 @@ msgstr "ver"
 #: app/templates/app/application/jobpositions/overview/fields/_page.html:33
 #: app/templates/app/application/peoples/overview/fields/_page.html:8
 #: app/templates/app/application/peoples/overview/fields/_page.html:34
-#: app/templates/app/application/permissions/overview/fields/_page.html:8
-#: app/templates/app/application/permissions/overview/fields/_page.html:33
+#: app/templates/app/application/permissions/page/overview/fields/_page.html:8
+#: app/templates/app/application/permissions/page/overview/fields/_page.html:33
 msgid "search"
 msgstr "pesquisar"
 
@@ -364,8 +397,8 @@ msgstr "pesquisar"
 #: app/templates/app/application/peoples/overview/fields/department.html:16
 #: app/templates/app/application/peoples/overview/fields/jobposition.html:16
 #: app/templates/app/application/peoples/overview/fields/people.html:7
-#: app/templates/app/application/permissions/overview/fields/department.html:16
-#: app/templates/app/application/permissions/overview/fields/jobposition.html:16
+#: app/templates/app/application/permissions/page/overview/fields/department.html:16
+#: app/templates/app/application/permissions/page/overview/fields/jobposition.html:16
 msgid "all"
 msgstr "todos"
 
@@ -378,25 +411,20 @@ msgstr "contém"
 #: app/templates/app/application/departments/overview/overview.html:10
 #: app/templates/app/application/jobpositions/overview/overview.html:10
 #: app/templates/app/application/peoples/overview/overview.html:10
-#: app/templates/app/application/permissions/overview/overview.html:10
+#: app/templates/app/application/permissions/page/overview/overview.html:10
 msgid "result"
 msgstr "resultado"
 
 #: app/templates/app/application/departments/overview/overview.html:43
 #: app/templates/app/application/jobpositions/overview/overview.html:49
 #: app/templates/app/application/peoples/overview/overview.html:55
-#: app/templates/app/application/permissions/overview/overview.html:49
+#: app/templates/app/application/permissions/page/overview/overview.html:49
+#: app/templates/app/application/permissions/sod/overview.html:61
 msgid "no results"
 msgstr "sem resultados"
 
-#: app/templates/app/application/jobpositions/code/detail/fields/department_edit.html:21
-#: app/templates/app/application/peoples/code/detail/fields/jobposition_edit.html:21
-#: app/templates/app/application/peoples/code/detail/fields/status.html:35
-msgid "select"
-msgstr "selecione"
-
 #: app/templates/app/application/jobpositions/options/jobpositions.html:27
-#: app/templates/app/application/permissions/code/options/jobpositions.html:27
+#: app/templates/app/application/permissions/options/jobpositions.html:27
 #: app/templates/app/base/menu/application.html:35
 msgid "jobpositions"
 msgstr "cargos"
@@ -420,6 +448,18 @@ msgstr "inativo"
 #: app/templates/app/application/peoples/code/detail/fields/status.html:19
 msgid "active"
 msgstr "ativo"
+
+#: app/templates/app/application/permissions/sod/fields/_page.html:43
+msgid "include"
+msgstr "incluir"
+
+#: app/templates/app/application/permissions/sod/overview.html:34
+msgid "action"
+msgstr "ação"
+
+#: app/templates/app/application/permissions/sod/overview.html:53
+msgid "delete"
+msgstr "deletar"
 
 #: app/templates/app/base/menu/_page.html:49
 msgid "options"

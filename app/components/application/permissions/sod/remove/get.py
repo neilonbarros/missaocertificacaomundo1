@@ -19,43 +19,33 @@ from app import packages as apppackages
 def page(
     request: HttpRequest,
     session_user: apppackages.utils.Session,
-    codejobposition: str,
+    codesod: str,
     type_page: str,
 ) -> HttpResponse:
     if request.method != "GET":
         raise Http404()
 
-    elif codejobposition == 0:
-        return redirect(
-            "app:application:jobpositions:page",
-            codejobposition=codejobposition,
-            type="edit",
-        )
-
     try:
         try:
-            result: appmodels.ApplicationJobPositions
-            result = appmodels.ApplicationJobPositions.objects.get(  # noqa: E501
-                id=codejobposition,
+            appmodels.ApplicationPermissionsSoD.objects.get(  # noqa: E501
+                id=codesod,
             )
 
-            title: str = (
-                f"{result.department.department} | {result.jobposition}"  # noqa
-            )
-
-        except appmodels.ApplicationJobPositions.DoesNotExist:
+        except appmodels.ApplicationPermissionsSoD.DoesNotExist:
             djangomessages.error(
                 request=request,
                 message=_("%(field)s not found")
                 % {
-                    "field": _("job position"),
+                    "field": "sod",
                 },
             )
-            raise ValueError("jobpositions_not_found")
+            raise ValueError("sod_not_found")
+
+        title: str = f"SoD {_('remove')}"
 
         return render(
             request=request,
-            template_name="app/application/jobpositions/code/remove/_page.html",  # noqa
+            template_name="app/application/permissions/sod/remove/_page.html",  # noqa
             context={
                 "settings_debug": settings.DEBUG,
                 "sessionuser": session_user,
@@ -63,15 +53,15 @@ def page(
                 "title": title,
                 "menu": False,
                 "display_center": True,
-                "codejobposition": codejobposition,
+                "codesod": codesod,
                 "type_page": type_page,
             },
         )
 
     except ValueError as e:
-        if str(e) in ("jobpositions_not_found",):
+        if str(e) in ("sod_not_found",):
             return redirect(
-                "app:application:jobpositions:page",
+                "app:application:permissions:sod:page",
             )
 
         raise ValueError(e)
