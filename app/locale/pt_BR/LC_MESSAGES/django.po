@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-15 14:03-0300\n"
+"POT-Creation-Date: 2023-08-15 23:42-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -107,7 +107,7 @@ msgstr "departamento"
 #: app/components/application/departments/code/post.py:68
 #: app/components/application/jobpositions/code/post.py:74
 #: app/components/application/peoples/code/post.py:126
-#: app/components/application/permissions/code/post.py:113
+#: app/components/application/permissions/code/post.py:161
 #, python-format
 msgid "%(field)s successfully saved"
 msgstr "%(field)s salvo com sucesso"
@@ -154,7 +154,17 @@ msgstr "pessoa"
 msgid "peoples"
 msgstr "pessoas"
 
-#: app/components/application/permissions/code/post.py:115
+#: app/components/application/permissions/code/post.py:71
+#, python-format
+msgid "(%(field)s conflit) %(permission1)s"
+msgstr "(conflito de %(field)s) %(permission1)s"
+
+#: app/components/application/permissions/code/post.py:81
+#, python-format
+msgid "(%(field)s conflit) %(permission2)s"
+msgstr "(conflito de %(field)s) %(permission2)s"
+
+#: app/components/application/permissions/code/post.py:163
 #: app/models/application_permissions.py:25
 #: app/models/application_permissions.py:28
 #: app/templates/app/application/permissions/code/overview.html:20
@@ -165,6 +175,7 @@ msgstr "permissão"
 
 #: app/components/application/permissions/get.py:102
 #: app/templates/app/application/permissions/code/overview.html:9
+#: app/templates/app/application/permissions/options/permissions.html:27
 #: app/templates/app/base/menu/application.html:44
 msgid "permissions"
 msgstr "permissões"
