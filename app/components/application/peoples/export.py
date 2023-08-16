@@ -26,21 +26,26 @@ def mycsv(
     writer = csv.writer(response)
     writer.writerow(
         [
-            "permission",
-            "jobposition",
+            "id",
+            "status",
+            "fullname",
             "department",
+            "jobposition",
         ]
     )
 
     result = (
-        appmodels.ApplicationPermissions.objects.all()
+        appmodels.ApplicationPeoples.objects.all()
         .select_related(
+            "department",
             "jobposition",
         )
         .values_list(
-            "permission",
+            "id",
+            "status",
+            "fullname",
+            "department__department",
             "jobposition__jobposition",
-            "jobposition__department__department",
         )
     )
     for row in result:
@@ -62,21 +67,26 @@ def myxlsx(
     worksheet = workbook.create_sheet(title="export", index=0)
 
     result = (
-        appmodels.ApplicationPermissions.objects.all()
+        appmodels.ApplicationPeoples.objects.all()
         .select_related(
+            "department",
             "jobposition",
         )
         .values_list(
-            "permission",
+            "id",
+            "status",
+            "fullname",
+            "department__department",
             "jobposition__jobposition",
-            "jobposition__department__department",
         )
     )
 
     columns: list[str] = [
-        "permission",
-        "jobposition",
+        "id",
+        "status",
+        "fullname",
         "department",
+        "jobposition",
     ]
     row_index: int = 1
     # Assign the titles for each cell of the header
@@ -93,6 +103,8 @@ def myxlsx(
             row[0],
             row[1],
             row[2],
+            row[3],
+            row[4],
         ]
 
         # Assign the data for each cell of the row

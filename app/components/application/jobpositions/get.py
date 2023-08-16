@@ -98,7 +98,7 @@ def page(
 
     return render(
         request=request,
-        template_name="app/application/jobpositions/_page.html",  # noqa
+        template_name="app/application/jobpositions/page/_page.html",  # noqa
         context={
             "settings_debug": settings.DEBUG,
             "sessionuser": session_user,
@@ -106,7 +106,7 @@ def page(
             "title": title,
             "menu": True,
             "display_center": False,
-            "options": "app/application/jobpositions/options/_page.html",  # noqa
+            "options": "app/application/jobpositions/page/options/_page.html",  # noqa
             "search_jobpositions_post": search_jobpositions_post,
             "search_department": search_department,
             "search_jobposition": search_jobposition,

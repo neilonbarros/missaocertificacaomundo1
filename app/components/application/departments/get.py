@@ -70,7 +70,7 @@ def page(
 
     return render(
         request=request,
-        template_name="app/application/departments/_page.html",  # noqa
+        template_name="app/application/departments/page/_page.html",  # noqa
         context={
             "settings_debug": settings.DEBUG,
             "sessionuser": session_user,
@@ -78,7 +78,7 @@ def page(
             "title": title,
             "menu": True,
             "display_center": False,
-            "options": "app/application/departments/options/_page.html",  # noqa
+            "options": "app/application/departments/page/options/_page.html",  # noqa
             "search_departments_post": search_departments_post,
             "search_department": search_department,
             "overview_departments": overview_departments,

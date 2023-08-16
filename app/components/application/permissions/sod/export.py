@@ -1,4 +1,5 @@
 import csv
+import os
 from io import BytesIO
 
 from django.http import HttpRequest, HttpResponse
@@ -18,7 +19,9 @@ def mycsv(
     session_user: apppackages.utils.Session,
 ):
     response = HttpResponse(content_type="text/csv")
-    response["Content-Disposition"] = 'attachment; filename="sod.csv"'
+    response[
+        "Content-Disposition"
+    ] = f'attachment; filename="{os.path.basename(os.path.dirname(__file__))}.csv"'  # noqa
 
     writer = csv.writer(response)
     writer.writerow(
@@ -75,7 +78,9 @@ def myxlsx(
     workbook.save(excelfile)
 
     response = HttpResponse(content_type="application/vnd.ms-excel")
-    response["Content-Disposition"] = 'attachment; filename="sod.xlsx"'
+    response[
+        "Content-Disposition"
+    ] = f'attachment; filename="{os.path.basename(os.path.dirname(__file__))}.xlsx"'  # noqa
     response.write(excelfile.getvalue())
 
     return response

@@ -9,16 +9,15 @@
     </div>
     <div class="card-body">
         <!-- Form -->
-        <form action="{% url 'app:application:jobpositions:search' %}"
+        <form action="{% url 'app:application:departments:search' %}"
             method="post"
             id="formSearchId">
             {% csrf_token %}
-            {% for hidden in form_jobposition.hidden_fields %}
+            {% for hidden in form_department.hidden_fields %}
                 {{ hidden }}
             {% endfor %}
 
-            {% with 'app/application/jobpositions/overview/fields/department.html' as varinclude %}{% include varinclude %}{% endwith %}
-            {% with 'app/application/jobpositions/overview/fields/jobposition.html' as varinclude %}{% include varinclude %}{% endwith %}
+            {% with 'app/application/departments/page/overview/fields/department.html' as varinclude %}{% include varinclude %}{% endwith %}
 
             <button class="
                 btn
@@ -40,7 +39,7 @@
                             const button = document.getElementById(thisId);
                             const buttonSpan = button.getElementsByTagName("span")[0];
 
-                            buttonSpan.classList.remove("hidden");
+                            buttonSpan.classList.remove("d-none");
 
                             const buttons = document.getElementsByTagName("button");
 
@@ -57,5 +56,11 @@
             </script>
         </form>
         <!-- End Form -->
+    </div>
+    <div class="
+        card-footer
+        text-body-secondary">
+        {% include 'app/application/departments/page/overview/fields/csv.html' %}
+        {% include 'app/application/departments/page/overview/fields/xlsx.html' %}
     </div>
 </div>

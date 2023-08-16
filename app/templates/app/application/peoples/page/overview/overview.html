@@ -24,10 +24,10 @@
                             {% translate 'fullname'|title %}
                         </th>
                         <th scope="col">
-                            {% translate 'jobposition'|title %}
+                            {% translate 'department'|title %}
                         </th>
                         <th scope="col">
-                            {% translate 'department'|title %}
+                            {% translate 'jobposition'|title %}
                         </th>
                     </tr>
                 </thead>
@@ -43,10 +43,10 @@
                                 {{ row.fullname }}
                             </td>
                             <td>
-                                {{ row.jobposition.jobposition }}
+                                {{ row.department.department }}
                             </td>
                             <td>
-                                {{ row.department.department }}
+                                {{ row.jobposition.jobposition }}
                             </td>
                         </tr>
                     {% empty %}

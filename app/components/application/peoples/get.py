@@ -123,7 +123,7 @@ def page(
 
     return render(
         request=request,
-        template_name="app/application/peoples/_page.html",  # noqa
+        template_name="app/application/peoples/page/_page.html",  # noqa
         context={
             "settings_debug": settings.DEBUG,
             "sessionuser": session_user,
@@ -131,7 +131,7 @@ def page(
             "title": title,
             "menu": True,
             "display_center": False,
-            "options": "app/application/peoples/options/_page.html",  # noqa
+            "options": "app/application/peoples/page/options/_page.html",  # noqa
             "search_peoples_post": search_peoples_post,
             "search_department": search_department,
             "search_jobposition": search_jobposition,

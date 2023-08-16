@@ -17,9 +17,9 @@
                 {{ hidden }}
             {% endfor %}
 
-            {% with 'app/application/peoples/overview/fields/department.html' as varinclude %}{% include varinclude %}{% endwith %}
-            {% with 'app/application/peoples/overview/fields/jobposition.html' as varinclude %}{% include varinclude %}{% endwith %}
-            {% with 'app/application/peoples/overview/fields/people.html' as varinclude %}{% include varinclude %}{% endwith %}
+            {% with 'app/application/peoples/page/overview/fields/department.html' as varinclude %}{% include varinclude %}{% endwith %}
+            {% with 'app/application/peoples/page/overview/fields/jobposition.html' as varinclude %}{% include varinclude %}{% endwith %}
+            {% with 'app/application/peoples/page/overview/fields/people.html' as varinclude %}{% include varinclude %}{% endwith %}
 
             <button class="
                 btn
@@ -58,5 +58,11 @@
             </script>
         </form>
         <!-- End Form -->
+    </div>
+    <div class="
+        card-footer
+        text-body-secondary">
+        {% include 'app/application/peoples/page/overview/fields/csv.html' %}
+        {% include 'app/application/peoples/page/overview/fields/xlsx.html' %}
     </div>
 </div>

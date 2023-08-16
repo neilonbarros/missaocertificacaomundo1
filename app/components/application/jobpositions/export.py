@@ -26,21 +26,21 @@ def mycsv(
     writer = csv.writer(response)
     writer.writerow(
         [
-            "permission",
+            "id",
             "jobposition",
             "department",
         ]
     )
 
     result = (
-        appmodels.ApplicationPermissions.objects.all()
+        appmodels.ApplicationJobPositions.objects.all()
         .select_related(
             "jobposition",
         )
         .values_list(
-            "permission",
-            "jobposition__jobposition",
-            "jobposition__department__department",
+            "id",
+            "jobposition",
+            "department__department",
         )
     )
     for row in result:
@@ -62,19 +62,19 @@ def myxlsx(
     worksheet = workbook.create_sheet(title="export", index=0)
 
     result = (
-        appmodels.ApplicationPermissions.objects.all()
+        appmodels.ApplicationJobPositions.objects.all()
         .select_related(
             "jobposition",
         )
         .values_list(
-            "permission",
-            "jobposition__jobposition",
-            "jobposition__department__department",
+            "id",
+            "jobposition",
+            "department__department",
         )
     )
 
     columns: list[str] = [
-        "permission",
+        "id",
         "jobposition",
         "department",
     ]
